@@ -89,13 +89,18 @@ const app = {
     return a
   },
 
+  // --- DARK MODE LOGIC (UPDATED) ---
   toggleTheme() {
-    // 1. Đảo trạng thái class 'dark' trên thẻ HTML
-    const html = document.documentElement
-    const isDark = html.classList.toggle('dark')
+    // 1. Kiểm tra trạng thái hiện tại trên html
+    const html = document.documentElement;
+    const isDark = html.classList.toggle('dark'); // toggle class
 
-    // 2. Lưu vào localStorage
-    localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    // 2. Lưu trạng thái mới vào localStorage
+    if (isDark) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
   },
   // ----------------------------------
 
@@ -172,15 +177,12 @@ const app = {
     }
   },
 
-
   checkNotice() {
     const modal = document.getElementById('ai-notice-modal')
     if (!modal) return
-
     const lastSeen = localStorage.getItem('notice_timestamp')
     const now = Date.now()
     const duration = 2 * 60 * 60 * 1000 
-
     if (!lastSeen || (now - lastSeen > duration)) {
       modal.classList.remove('hidden')
     }
@@ -189,9 +191,7 @@ const app = {
   closeNotice() {
     const modal = document.getElementById('ai-notice-modal')
     if (!modal) return
-
     localStorage.setItem('notice_timestamp', Date.now())
-    
     modal.classList.add('hidden')
   },
 
@@ -217,13 +217,10 @@ const app = {
     const sub = this.data.subjects.find(s => s.id === id)
     if (!sub) return
     if ((sub.locked ?? this.settings.lockedByDefaultSubject) && !(await this.tryUnlockSubject(sub))) return
-
     this.data.state.currentSub = sub
-
     document.getElementById('selected-sub-name').innerText = sub.name
     document.getElementById('selected-sub-icon').className = `w-16 h-16 rounded-2xl ${sub.color} flex items-center justify-center text-white shadow-md text-3xl`
     document.getElementById('selected-sub-icon').innerHTML = `<i class="fa-solid ${sub.icon}"></i>`
-
     this.switchView('select')
     await this.renderExamTiles()
   },
@@ -232,8 +229,6 @@ const app = {
     const sub = this.data.state.currentSub
     if (!sub) return
     const tiles = Array.from(document.querySelectorAll('.exam-tile[data-exam-type]'))
-    
-    // Map số lượng câu mặc định để hiển thị nếu không load được file
     const defaultCounts = { '15m': 10, '45m': 30, 'gk1': 40, 'ck1': 50, 'gk2': 40, 'ck2': 50, 'hk': 50 }
 
     await Promise.all(tiles.map(async tile => {
@@ -242,29 +237,23 @@ const app = {
       const lockInfo = cfg.lockInfo || {}
       const locked = (lockInfo.locked ?? this.settings.lockedByDefaultExam ?? false) && !this.isExamUnlocked(sub.id, type)
 
-      // Xử lý UI khóa/mở
       tile.classList.toggle('opacity-75', locked)
       const badge = tile.querySelector('.exam-locked-badge')
       if (badge) badge.classList.toggle('hidden', !locked)
 
-      // Cập nhật tiêu đề
       const h3 = tile.querySelector('h3')
       if (cfg.title && h3) h3.textContent = cfg.title
 
-      // --- SỬA LOGIC ĐẾM CÂU HỎI (Fix lỗi 0 câu) ---
       let qCount = cfg.q
-      // Nếu cấu hình là null (để lấy hết), ta thử load file để đếm
       if (qCount == null) {
         const bank = await this.loadQuestionBank(cfg.file)
         if (bank && bank.length > 0) {
           qCount = bank.length
         } else {
-          // Nếu load lỗi hoặc = 0, lấy số mặc định để hiển thị cho đẹp
           qCount = defaultCounts[type] || 0
         }
       }
 
-      // Cập nhật dòng Meta
       const meta = tile.querySelector('[data-exam-meta]')
       if (meta) {
         const levelTxt = cfg.level ? ` • ${cfg.level}` : ''
@@ -374,7 +363,6 @@ const app = {
     }
 
     const key = this.sessionKey(sub.id, type)
-    // Nếu forceNew (Làm lại) -> Bỏ qua session cũ
     const saved = forceNew ? null : this.loadExamSession(key)
 
     let questions = []
@@ -385,7 +373,6 @@ const app = {
     let startedAt = Date.now()
 
     if (saved && !saved.isSubmitted && saved.file === cfg.file && Array.isArray(saved.questionIds) && saved.questionIds.length > 0) {
-      // --- TRƯỜNG HỢP TIẾP TỤC BÀI CŨ ---
       questionIds = saved.questionIds.filter(i => i >= 0 && i < bank.length)
       questions = questionIds.map(i => bank[i]).filter(Boolean)
       timeLeft = typeof saved.timeLeft === 'number' ? saved.timeLeft : timeLeft
@@ -393,20 +380,10 @@ const app = {
       bookmarks = new Set(saved.bookmarks || [])
       startedAt = saved.startedAt || startedAt
     } else {
-      // --- TRƯỜNG HỢP TẠO ĐỀ MỚI (LÀM LẠI HOẶC MỚI TINH) ---
       const indices = Array.from({ length: bank.length }, (_, i) => i)
-      
-      // FIX LOGIC RANDOM:
-      // Nếu là làm lại (forceNew) hoặc bài mới, ta cộng thêm Date.now() vào seed để đảm bảo luôn ngẫu nhiên
-      // Không dùng cố định sessionId nữa
       const seedString = `${this.sessionId}|${sub.id}|${type}|${cfg.file}|${Date.now()}`
       const seed = this.hashSeed(seedString)
-      
       const shuffledIdx = this.seededShuffle(indices, seed)
-      
-      // FIX LOGIC SỐ LƯỢNG CÂU:
-      // Nếu cfg.q là null (do mình set ở trên) -> Lấy bank.length (tất cả câu)
-      // Nếu cfg.q có số (ví dụ 40) -> Lấy min(40, tổng số câu)
       const limit = cfg.q ? cfg.q : bank.length
       const takeN = Math.min(limit, shuffledIdx.length)
       
@@ -440,11 +417,8 @@ const app = {
     }
 
     this.saveExamSession()
-
     document.getElementById('quiz-title-display').innerText = sub.name
-    // Cập nhật text hiển thị số câu
     document.getElementById('quiz-status-text').innerText = `${cfg.name} • ${questions.length} câu`
-
     document.getElementById('timer-container').classList.remove('hidden')
     document.getElementById('mobile-action-bar').classList.remove('hidden')
     document.getElementById('desktop-action-area').classList.remove('hidden')
@@ -488,49 +462,67 @@ const app = {
       const userAns = st.answers[qi]
       const correctIdx = st.key[qi]
       const isBookmarked = st.bookmarks.has(qi)
+
+      // --- TRÍCH XUẤT THÔNG TIN: GỢI Ý (HINT) ---
+      // Lấy từ q.hint. 
+      const hint = q.hint || ''; 
+      const hintBox = hint ? `
+         <div id="hint-box-${qi}" class="mt-2">
+            <button onclick="app.toggleElement('hint-content-${qi}')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 underline flex items-center gap-1 transition-colors">
+              <i class="fa-solid fa-lightbulb"></i> Xem gợi ý
+            </button>
+            <div id="hint-content-${qi}" class="hidden mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 text-sm rounded-lg border border-blue-100 dark:border-blue-800">
+               <span class="font-bold">Gợi ý:</span> ${hint}
+            </div>
+         </div>
+      ` : '';
       
-      // --- XỬ LÝ PHẦN GIẢI THÍCH (Chỉ hiện khi xem lại hoặc có nút xem) ---
-      const explain = q.explain || q.explanation || ''
-      const explainBox = explain ? `
-        <div id="explain-box-${qi}" class="mt-4 ${st.isReview ? '' : 'hidden'}">
+      // --- TRÍCH XUẤT THÔNG TIN: GIẢI THÍCH (EXPLANATION) ---
+      // Ưu tiên q.explain / q.explanation.
+      // Nếu không có, tìm trong đáp án ĐÚNG (q.answeroption[correctIdx].rationale)
+      let explainText = q.explain || q.explanation || q.rationale || '';
+      if (!explainText && opts.length > 0) {
+          // Logic tìm rationale của đáp án đúng nếu chưa có giải thích chung
+          const correctOpt = opts.find(o => o.isCorrect === true);
+          if (correctOpt && correctOpt.rationale) {
+              explainText = correctOpt.rationale;
+          }
+      }
+
+      // Khung hiển thị giải thích (Chỉ hiện khi Xem lại = Review)
+      const explainBox = (explainText && st.isReview) ? `
+        <div id="explain-box-${qi}" class="mt-4 animate-fade-in">
           <button onclick="app.toggleExplanation(${qi})" class="w-full flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-4 py-3 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-            <span><i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>Giải thích chi tiết</span>
-            <i id="explain-icon-${qi}" class="fa-solid fa-chevron-down rotate-icon transition-transform duration-300"></i>
+            <span><i class="fa-solid fa-book-open text-emerald-500 mr-2"></i>Giải thích chi tiết</span>
+            <i id="explain-icon-${qi}" class="fa-solid fa-chevron-down rotate-icon transition-transform duration-300 open"></i>
           </button>
-          <div id="explain-content-${qi}" class="explanation-content mt-3 text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 leading-relaxed ${st.isReview ? 'open' : ''}">
-            ${explain}
+          <div id="explain-content-${qi}" class="explanation-content mt-3 text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 leading-relaxed open">
+            ${explainText}
           </div>
         </div>
-      ` : ''
+      ` : '';
 
-      // --- XỬ LÝ DANH SÁCH ĐÁP ÁN (PHẦN QUAN TRỌNG NHẤT) ---
+      // --- DANH SÁCH ĐÁP ÁN ---
       const optionsHtml = opts.map((o, oi) => {
-        // Kiểm tra xem user đã chọn câu này chưa
         const isChecked = userAns == oi ? 'checked' : ''
         
-        // Biến style cho chế độ Xem lại (Review)
         let reviewClass = ""
-        let reviewIcon = "" // Icon mặc định rỗng (sẽ hiện khi check hoặc review)
+        let reviewIcon = ""
 
         if (st.isReview) {
-           // Logic màu sắc khi xem lại
            if (oi === correctIdx) {
-             // ĐÁP ÁN ĐÚNG -> Màu xanh lá
              reviewClass = "!border-green-500 !bg-green-50 dark:!bg-green-900/20"
              reviewIcon = `<div class="ml-auto text-green-600 dark:text-green-400 font-bold text-xs uppercase tracking-wider bg-green-100 dark:bg-green-900/40 px-2 py-1 rounded">Đúng</div>`
            } else if (userAns == oi && oi !== correctIdx) {
-             // CHỌN SAI -> Màu đỏ
              reviewClass = "!border-red-500 !bg-red-50 dark:!bg-red-900/20"
              reviewIcon = `<div class="ml-auto text-red-600 dark:text-red-400 font-bold text-xs uppercase tracking-wider bg-red-100 dark:bg-red-900/40 px-2 py-1 rounded">Sai</div>`
            } else {
-             // KHÔNG LIÊN QUAN -> Mờ đi
              reviewClass = "opacity-50 grayscale"
            }
         }
 
         return `
           <label id="opt-${qi}-${oi}" class="relative w-full block mb-3 cursor-pointer group select-none">
-            
             <input type="radio" name="q${qi}" value="${oi}" 
                    class="peer sr-only" 
                    onchange="app.onAnswer(${qi}, ${oi})" 
@@ -559,30 +551,30 @@ const app = {
               </div>
 
               ${reviewIcon ? `<div class="pl-2">${reviewIcon}</div>` : ''}
-
             </div>
           </label>
         `
       }).join('')
 
-      // --- TRẢ VỀ HTML CỦA TOÀN BỘ CÂU HỎI ---
+      // --- GHÉP TOÀN BỘ CÂU ---
       return `
         <div id="q-${qi}" class="bg-white dark:bg-[#1e293b] p-5 md:p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm mb-6 transition-all hover:shadow-md">
-          
           <div class="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100 dark:border-slate-700/50">
             <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded">
               Câu ${qi}
             </span>
             <button onclick="app.toggleBookmark(${qi})" class="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-slate-100 dark:hover:bg-slate-700 group">
-              <i id="bookmark-${qi}" class="fa-solid fa-bookmark text-lg transition-colors ${isBookmarked ? 'text-yellow-500' : 'text-slate-300 dark:text-slate-600 group-hover:text-yellow-400'}"></i>
+              <i id="bookmark-icon-${qi}" class="fa-solid fa-bookmark text-lg transition-colors ${isBookmarked ? 'text-yellow-500' : 'text-slate-300 dark:text-slate-600 group-hover:text-yellow-400'}"></i>
             </button>
           </div>
 
-          <div class="text-lg font-semibold text-slate-800 dark:text-slate-100 leading-relaxed mb-6">
+          <div class="text-lg font-semibold text-slate-800 dark:text-slate-100 leading-relaxed mb-4">
             ${q.text || q.question || ''}
           </div>
+          
+          ${hintBox}
 
-          <div class="space-y-1">
+          <div class="space-y-1 mt-4">
             ${optionsHtml}
           </div>
           
@@ -598,27 +590,32 @@ const app = {
     const st = this.data.state
     const buildButtons = (containerId) => {
       const cont = document.getElementById(containerId)
+      if(!cont) return
       cont.innerHTML = Array.from({ length: st.totalQ }, (_, i) => {
         const qi = i + 1
         const userAns = st.answers[qi]
         const correctIdx = st.key[qi]
         
-        // Style mặc định (chưa làm)
         let cls = 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent hover:border-slate-300 dark:hover:border-slate-500'
-        
-        // Style khi ĐÃ CHỌN (Thêm border nổi bật như bạn yêu cầu)
         if (userAns != undefined) {
           cls = 'bg-blue-600 text-white shadow-md shadow-blue-500/30 border-2 border-blue-400 ring-1 ring-blue-600/50' 
         }
 
-        // Style khi XEM LẠI (Review)
         if (st.isReview) {
           if (userAns == undefined) cls = 'bg-slate-200 dark:bg-slate-800 text-slate-400 opacity-50'
           else if (Number(userAns) === correctIdx) cls = 'bg-emerald-500 text-white shadow-sm border border-emerald-400'
           else cls = 'bg-red-500 text-white shadow-sm border border-red-400'
         }
         
-        return `<button onclick="app.jumpToQuestion(${qi})" class="w-10 h-10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center justify-center ${cls}">${qi}</button>`
+        // Chỉ thị Bookmark (dấu chấm vàng)
+        const mark = st.bookmarks.has(qi) ? `<div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full border border-white dark:border-slate-800"></div>` : ''
+        
+        return `
+          <div class="relative">
+            <button onclick="app.jumpToQuestion(${qi})" class="w-full h-10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center justify-center ${cls}">${qi}</button>
+            ${mark}
+          </div>
+        `
       }).join('')
     }
     buildButtons('desktop-palette')
@@ -644,12 +641,29 @@ const app = {
 
   toggleBookmark(qi) {
     const st = this.data.state
-    if (st.bookmarks.has(qi)) st.bookmarks.delete(qi)
-    else st.bookmarks.add(qi)
-    const icon = document.getElementById(`bookmark-${qi}`)
-    if (icon) icon.classList.toggle('text-amber-500', st.bookmarks.has(qi))
+    if (st.bookmarks.has(qi)) {
+      st.bookmarks.delete(qi)
+      // Cập nhật giao diện ngay lập tức mà không render lại toàn bộ câu hỏi
+      const icon = document.getElementById(`bookmark-icon-${qi}`)
+      if (icon) {
+        icon.classList.remove('text-yellow-500')
+        icon.classList.add('text-slate-300', 'dark:text-slate-600')
+      }
+    } else {
+      st.bookmarks.add(qi)
+      const icon = document.getElementById(`bookmark-icon-${qi}`)
+      if (icon) {
+        icon.classList.remove('text-slate-300', 'dark:text-slate-600')
+        icon.classList.add('text-yellow-500')
+      }
+    }
     this.saveExamSession()
     this.renderPalette()
+  },
+
+  toggleElement(id) {
+    const el = document.getElementById(id)
+    if(el) el.classList.toggle('hidden')
   },
 
   toggleExplanation(qi) {
