@@ -43,6 +43,8 @@ const app = {
       exams: s.exams || {}
     })).filter(s => s.id)
 
+
+    this.checkNotice()
     this.renderSubjects()
     this.switchView('home')
   },
@@ -168,6 +170,29 @@ const app = {
       file: merged.file || sub.file,
       lockInfo
     }
+  },
+
+
+  checkNotice() {
+    const modal = document.getElementById('ai-notice-modal')
+    if (!modal) return
+
+    const lastSeen = localStorage.getItem('notice_timestamp')
+    const now = Date.now()
+    const duration = 2 * 60 * 60 * 1000 
+
+    if (!lastSeen || (now - lastSeen > duration)) {
+      modal.classList.remove('hidden')
+    }
+  },
+
+  closeNotice() {
+    const modal = document.getElementById('ai-notice-modal')
+    if (!modal) return
+
+    localStorage.setItem('notice_timestamp', Date.now())
+    
+    modal.classList.add('hidden')
   },
 
   renderSubjects() {
