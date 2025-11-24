@@ -89,20 +89,19 @@ const app = {
     return a
   },
 
-  // --- DARK MODE LOGIC (UPDATED) ---
+  // --- HÀM TOGGLE THEME MỚI (CHẮC CHẮN HOẠT ĐỘNG) ---
   toggleTheme() {
-    // 1. Kiểm tra trạng thái hiện tại trên html
     const html = document.documentElement;
-    const isDark = html.classList.toggle('dark'); // toggle class
-
-    // 2. Lưu trạng thái mới vào localStorage
-    if (isDark) {
-      localStorage.setItem('theme', 'dark');
+    // Kiểm tra class 'dark' trực tiếp trên thẻ html để đảm bảo đồng bộ
+    if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
     } else {
-      localStorage.setItem('theme', 'light');
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
     }
   },
-  // ----------------------------------
+  // -----------------------------------------------------
 
   isSubjectUnlocked(id) {
     return localStorage.getItem(`unlocked_subject_${id}`) === '1'
@@ -463,46 +462,44 @@ const app = {
       const correctIdx = st.key[qi]
       const isBookmarked = st.bookmarks.has(qi)
 
-      // --- TRÍCH XUẤT THÔNG TIN: GỢI Ý (HINT) ---
-      // Lấy từ q.hint. 
-      const hint = q.hint || ''; 
-      const hintBox = hint ? `
-         <div id="hint-box-${qi}" class="mt-2">
+      // --- LOGIC GỢI Ý (HINT) ---
+      // Lấy từ hint hoặc suggestion. Hiển thị khi đang làm bài.
+      const hint = q.hint || q.suggestion || ''; 
+      const hintBox = (hint && !st.isReview) ? `
+         <div class="mt-2 mb-2">
             <button onclick="app.toggleElement('hint-content-${qi}')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 underline flex items-center gap-1 transition-colors">
-              <i class="fa-solid fa-lightbulb"></i> Xem gợi ý
+              <i class="fa-solid fa-lightbulb text-yellow-500"></i> Xem gợi ý
             </button>
-            <div id="hint-content-${qi}" class="hidden mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 text-sm rounded-lg border border-blue-100 dark:border-blue-800">
+            <div id="hint-content-${qi}" class="hidden mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 text-sm rounded-lg border border-blue-100 dark:border-blue-800/50">
                <span class="font-bold">Gợi ý:</span> ${hint}
             </div>
          </div>
       ` : '';
       
-      // --- TRÍCH XUẤT THÔNG TIN: GIẢI THÍCH (EXPLANATION) ---
-      // Ưu tiên q.explain / q.explanation.
-      // Nếu không có, tìm trong đáp án ĐÚNG (q.answeroption[correctIdx].rationale)
-      let explainText = q.explain || q.explanation || q.rationale || '';
+      // --- LOGIC GIẢI THÍCH (EXPLANATION) ---
+      // Lấy từ rationale hoặc explanation. CHỈ hiển thị khi REVIEW.
+      let explainText = q.explain || q.explanation || '';
+      
+      // Nếu không có explanation chung, thử lấy rationale của ĐÁP ÁN ĐÚNG
       if (!explainText && opts.length > 0) {
-          // Logic tìm rationale của đáp án đúng nếu chưa có giải thích chung
           const correctOpt = opts.find(o => o.isCorrect === true);
           if (correctOpt && correctOpt.rationale) {
               explainText = correctOpt.rationale;
           }
       }
 
-      // Khung hiển thị giải thích (Chỉ hiện khi Xem lại = Review)
       const explainBox = (explainText && st.isReview) ? `
-        <div id="explain-box-${qi}" class="mt-4 animate-fade-in">
+        <div id="explain-box-${qi}" class="mt-4 animate-fade-in border-t border-slate-100 dark:border-slate-700 pt-4">
           <button onclick="app.toggleExplanation(${qi})" class="w-full flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-4 py-3 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-            <span><i class="fa-solid fa-book-open text-emerald-500 mr-2"></i>Giải thích chi tiết</span>
+            <span><i class="fa-solid fa-book-open text-emerald-500 mr-2"></i>Giải thích đáp án</span>
             <i id="explain-icon-${qi}" class="fa-solid fa-chevron-down rotate-icon transition-transform duration-300 open"></i>
           </button>
-          <div id="explain-content-${qi}" class="explanation-content mt-3 text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 leading-relaxed open">
+          <div id="explain-content-${qi}" class="explanation-content mt-3 text-sm text-slate-600 dark:text-slate-300 bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30 leading-relaxed open">
             ${explainText}
           </div>
         </div>
       ` : '';
 
-      // --- DANH SÁCH ĐÁP ÁN ---
       const optionsHtml = opts.map((o, oi) => {
         const isChecked = userAns == oi ? 'checked' : ''
         
@@ -556,14 +553,14 @@ const app = {
         `
       }).join('')
 
-      // --- GHÉP TOÀN BỘ CÂU ---
       return `
         <div id="q-${qi}" class="bg-white dark:bg-[#1e293b] p-5 md:p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm mb-6 transition-all hover:shadow-md">
           <div class="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100 dark:border-slate-700/50">
             <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded">
               Câu ${qi}
             </span>
-            <button onclick="app.toggleBookmark(${qi})" class="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-slate-100 dark:hover:bg-slate-700 group">
+            <button onclick="app.toggleBookmark(${qi})" class="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-slate-100 dark:hover:bg-slate-700 group" title="Đánh dấu câu hỏi này">
+              <!-- ID bookmark icon được định nghĩa chuẩn xác ở đây -->
               <i id="bookmark-icon-${qi}" class="fa-solid fa-bookmark text-lg transition-colors ${isBookmarked ? 'text-yellow-500' : 'text-slate-300 dark:text-slate-600 group-hover:text-yellow-400'}"></i>
             </button>
           </div>
@@ -607,8 +604,7 @@ const app = {
           else cls = 'bg-red-500 text-white shadow-sm border border-red-400'
         }
         
-        // Chỉ thị Bookmark (dấu chấm vàng)
-        const mark = st.bookmarks.has(qi) ? `<div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full border border-white dark:border-slate-800"></div>` : ''
+        const mark = st.bookmarks.has(qi) ? `<div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full border border-white dark:border-slate-800 shadow-sm z-10"></div>` : ''
         
         return `
           <div class="relative">
@@ -641,24 +637,23 @@ const app = {
 
   toggleBookmark(qi) {
     const st = this.data.state
+    const icon = document.getElementById(`bookmark-icon-${qi}`)
+    
     if (st.bookmarks.has(qi)) {
       st.bookmarks.delete(qi)
-      // Cập nhật giao diện ngay lập tức mà không render lại toàn bộ câu hỏi
-      const icon = document.getElementById(`bookmark-icon-${qi}`)
       if (icon) {
         icon.classList.remove('text-yellow-500')
         icon.classList.add('text-slate-300', 'dark:text-slate-600')
       }
     } else {
       st.bookmarks.add(qi)
-      const icon = document.getElementById(`bookmark-icon-${qi}`)
       if (icon) {
         icon.classList.remove('text-slate-300', 'dark:text-slate-600')
         icon.classList.add('text-yellow-500')
       }
     }
     this.saveExamSession()
-    this.renderPalette()
+    this.renderPalette() // Cập nhật cả palette bên cạnh
   },
 
   toggleElement(id) {
