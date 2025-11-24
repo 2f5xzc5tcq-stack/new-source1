@@ -22,7 +22,7 @@
       "name": "Lịch Sử",
       "color": "bg-red-500",
       "icon": "fa-landmark",
-      "file": "b.json",
+      "file": "lichsu/lichsu_15p.json",
 
       "locked": false,
       "unlock": "",
