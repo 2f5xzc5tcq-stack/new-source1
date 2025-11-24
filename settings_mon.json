@@ -1,0 +1,115 @@
+{
+  "version": "3.0",
+
+
+  "lockedByDefaultSubject": true,
+
+  "examDefaults": {
+    "15m": { "locked": true, "unlock": "", "note": "Bài 15 phút đang khóa. Nhập mã để mở:" },
+    "45m": { "locked": true, "unlock": "", "note": "Bài 1 tiết đang khóa. Nhập mã để mở:" },
+    "gk1": { "locked": true, "unlock": "", "note": "Giữa HK1 đang khóa. Nhập mã để mở:" },
+    "ck1": { "locked": true, "unlock": "", "note": "Cuối HK1 đang khóa. Nhập mã để mở:" },
+    "gk2": { "locked": true, "unlock": "", "note": "Giữa HK2 đang khóa. Nhập mã để mở:" },
+    "ck2": { "locked": true, "unlock": "", "note": "Cuối HK2 đang khóa. Nhập mã để mở:" },
+    "hk":  { "locked": true, "unlock": "", "note": "Đề THPT QG đang khóa. Nhập mã để mở:" }
+  },
+
+
+
+  "subjects": [
+    {
+      "id": "hist",
+      "name": "Lịch Sử",
+      "color": "bg-red-500",
+      "icon": "fa-landmark",
+      "file": "b.json",
+
+      "locked": false,
+      "unlock": "",
+      "note": "Sử mở miễn phí, chỉ làm được bài 15 phút",
+
+      "exams": {
+        "15m": { "locked": false, "unlock": "", "note": "Bài 15 phút Sử mở miễn phí" },
+
+        "45m": { "locked": true, "unlock": "", "note": "Bài 1 tiết Sử đang khóa. Nhập mã để mở:" },
+        "gk1": { "locked": true, "unlock": "", "note": "GK1 Sử đang khóa. Nhập mã để mở:" },
+        "ck1": { "locked": true, "unlock": "", "note": "CK1 Sử đang khóa. Nhập mã để mở:" },
+        "gk2": { "locked": true, "unlock": "", "note": "GK2 Sử đang khóa. Nhập mã để mở:" },
+        "ck2": { "locked": true, "unlock": "", "note": "CK2 Sử đang khóa. Nhập mã để mở:" },
+        "hk":  { "locked": true, "unlock": "", "note": "Đề THPT Sử đang khóa. Nhập mã để mở:" }
+      }
+    },
+
+    {
+      "id": "math",
+      "name": "Toán Học",
+      "color": "bg-blue-500",
+      "icon": "fa-calculator",
+      "file": "math.json",
+
+      "locked": true,
+      "unlock": "",
+      "note": "Môn Toán đang khóa. Nhập mã để mở:"
+    },
+
+    {
+      "id": "phys",
+      "name": "Vật Lí",
+      "color": "bg-violet-500",
+      "icon": "fa-atom",
+      "file": "phys.json",
+
+      "locked": true,
+      "unlock": "",
+      "note": "Môn Vật Lí đang khóa. Nhập mã để mở:"
+    },
+
+    {
+      "id": "chem",
+      "name": "Hóa Học",
+      "color": "bg-emerald-500",
+      "icon": "fa-flask",
+      "file": "chem.json",
+
+      "locked": true,
+      "unlock": "",
+      "note": "Môn Hóa đang khóa. Nhập mã để mở:"
+    },
+
+    {
+      "id": "eng",
+      "name": "Tiếng Anh",
+      "color": "bg-amber-500",
+      "icon": "fa-language",
+      "file": "eng.json",
+
+      "locked": true,
+      "unlock": "",
+      "note": "Môn Tiếng Anh đang khóa. Nhập mã để mở:"
+    },
+
+    {
+      "id": "geo",
+      "name": "Địa Lý",
+      "color": "bg-cyan-500",
+      "icon": "fa-earth-americas",
+      "file": "geo.json",
+
+      "locked": true,
+      "unlock": "",
+      "note": "Môn Địa Lý đang khóa. Nhập mã để mở:"
+    },
+
+    {
+      "id": "it",
+      "name": "Tin Học",
+      "color": "bg-indigo-500",
+      "icon": "fa-desktop",
+      "file": "it.json",
+
+      "locked": true,
+      "unlock": "",
+      "note": "Môn Tin đang khóa. Nhập mã để mở:"
+    }
+  ]
+}
