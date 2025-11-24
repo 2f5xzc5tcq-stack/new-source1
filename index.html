@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Nckx-ELearning - Luyện Thi THPT & Học Kỳ</title>
 
-  <!-- FIX QUAN TRỌNG 1: Load Tailwind CSS từ CDN trước -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- FIX QUAN TRỌNG 2: Cấu hình sau khi thư viện đã load -->
   <script>
     tailwind.config = {
-      darkMode: 'class', // Kích hoạt chế độ Dark Mode thủ công
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'] },
@@ -31,13 +29,21 @@
     }
   </script>
 
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' },
+      startup: { typeset: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="app.css" />
 
-  <!-- Script check theme ngay lập tức để tránh chớp trắng (FOUC) -->
   <script>
-    // Logic này chạy độc lập với tailwind, chỉ thêm class vào HTML
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     } else {
@@ -60,11 +66,8 @@
       </div>
     </div>
 
-    <!-- Nút Toggle Theme -->
     <button onclick="app.toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center text-slate-600 dark:text-yellow-400 focus:outline-none">
-      <!-- Icon Mặt trăng (Hiện ở Light mode) -->
       <i class="fa-solid fa-moon dark:hidden text-lg transition-transform hover:-rotate-12"></i>
-      <!-- Icon Mặt trời (Hiện ở Dark mode) -->
       <i class="fa-solid fa-sun hidden dark:block text-lg transition-transform hover:rotate-45"></i>
     </button>
   </header>
@@ -95,10 +98,10 @@
       </div>
 
       <div class="space-y-8">
+        <!-- GIỮ NGUYÊN PHẦN NỘI DUNG CÁC KHỐI BÀI THI -->
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Kiểm tra thường xuyên</h3>
           <div class="grid md:grid-cols-2 gap-4">
-            <!-- 15 phút -->
             <div data-exam-type="15m" onclick="app.onExamTileClick('15m')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0 border border-emerald-200 dark:border-emerald-500/20">15'</div>
               <div class="flex-1 min-w-0">
@@ -110,7 +113,6 @@
                  <i class="fa-solid fa-play text-slate-300 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-primary-500 transition-colors text-lg"></i>
               </div>
             </div>
-            <!-- 45 phút -->
             <div data-exam-type="45m" onclick="app.onExamTileClick('45m')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm shrink-0 border border-blue-200 dark:border-blue-500/20">45'</div>
               <div class="flex-1 min-w-0">
@@ -124,8 +126,7 @@
             </div>
           </div>
         </div>
-        
-        <!-- HỌC KỲ 1 -->
+
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Học kỳ 1</h3>
           <div class="grid md:grid-cols-2 gap-4">
@@ -154,7 +155,6 @@
           </div>
         </div>
 
-        <!-- HỌC KỲ 2 -->
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Học kỳ 2</h3>
           <div class="grid md:grid-cols-2 gap-4">
@@ -183,7 +183,6 @@
           </div>
         </div>
 
-        <!-- TỔNG ÔN -->
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Tổng ôn</h3>
           <div data-exam-type="hk" onclick="app.onExamTileClick('hk')" class="exam-tile group relative bg-gradient-to-r from-indigo-600 to-purple-600 p-5 rounded-xl shadow-lg cursor-pointer hover:shadow-xl hover:scale-[1.01] transition-all flex items-center gap-4">
@@ -200,7 +199,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -212,7 +210,10 @@
         <button onclick="app.quitQuiz()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"><i class="fa-solid fa-xmark text-xl"></i></button>
         <div>
           <h3 class="font-bold text-sm leading-none dark:text-white" id="quiz-title-display">Môn</h3>
-          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1" id="quiz-status-text">Đang làm bài</p>
+          <div class="flex items-center gap-2 mt-1">
+             <p class="text-[10px] text-slate-500 dark:text-slate-400" id="quiz-status-text">Đang làm bài</p>
+             <span id="training-mode-badge" class="hidden text-[9px] font-bold text-white bg-emerald-500 px-1.5 rounded">Luyện tập</span>
+          </div>
         </div>
       </div>
       <div id="timer-container" class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-red-100 dark:border-red-800/30 font-mono font-bold text-sm transition-colors">
@@ -239,7 +240,6 @@
       </div>
     </div>
 
-    <!-- Mobile Footer Action -->
     <div id="mobile-action-bar" class="md:hidden h-16 bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 flex items-center justify-between px-4 shrink-0 z-20 pb-safe transition-colors">
       <button onclick="app.jumpToUnanswered()" class="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1 active:text-primary-600">
         <i class="fa-solid fa-forward"></i> Chưa làm
@@ -253,7 +253,6 @@
       </button>
     </div>
 
-    <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="fixed inset-0 z-40 hidden">
       <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="app.toggleDrawer()"></div>
       <div class="absolute bottom-0 w-full bg-white dark:bg-slate-800 rounded-t-2xl max-h-[60vh] flex flex-col shadow-2xl transform translate-y-full transition-transform duration-300 transition-colors" id="drawer-content">
@@ -297,6 +296,42 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- NEW: MODAL CHỌN CHẾ ĐỘ THI (QUAN TRỌNG) -->
+  <div id="mode-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="app.closeModeModal()"></div>
+    <div class="relative bg-white dark:bg-slate-800 w-full max-w-md mx-4 p-6 rounded-2xl shadow-2xl animate-slide-up border border-slate-100 dark:border-slate-700">
+        <div class="text-center mb-6">
+            <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-4 mx-auto shadow-sm">
+                <i class="fa-solid fa-clipboard-question"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 dark:text-white">Chọn chế độ làm bài</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Bạn muốn làm bài theo cách nào?</p>
+        </div>
+
+        <div class="space-y-3">
+            <button onclick="app.confirmStart('exam')" class="w-full p-4 flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-700/50 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all group text-left">
+                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">Chế độ Kiểm tra</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Làm hết bài mới biết điểm và xem đáp án</div>
+                </div>
+            </button>
+
+            <button onclick="app.confirmStart('training')" class="w-full p-4 flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-700/50 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all group text-left">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-slate-700 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Chế độ Luyện tập</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Biết ngay kết quả và xem giải thích khi chọn đáp án</div>
+                </div>
+            </button>
+        </div>
     </div>
   </div>
 
