@@ -2,894 +2,948 @@
   "question": [
     {
       "question_number": 1,
-      "question": "Trong bối cảnh lịch sử sau ngày 2-9-1945, sự kiện nào đã giáng đòn đầu tiên vào âm mưu 'đánh nhanh, thắng nhanh' của thực dân Pháp?",
+      "question": "Trong bối cảnh lịch sử của Cách mạng tháng Tám năm 1945, sự kiện nào đã tạo ra thời cơ 'ngàn năm có một' để nhân dân Việt Nam đứng lên giành chính quyền?",
       "answeroption": [
         {
-          "text": "Cuộc chiến đấu ở các đô thị phía Bắc vĩ tuyến 16.",
-          "rationale": "Sai. Đây là sự kiện diễn ra từ tháng 12/1946, sau sự kiện Nam Bộ kháng chiến.",
+          "text": "Nhật đảo chính Pháp trên toàn Đông Dương (3-1945).",
+          "rationale": "Sai. Sự kiện này chỉ tạo ra tiền đề, chưa phải là thời cơ chín muồi nhất.",
           "isCorrect": false
         },
         {
-          "text": "Cuộc kháng chiến của quân dân Nam Bộ (từ 23-9-1945).",
-          "rationale": "Đúng. Cuộc chiến đấu ở Nam Bộ đã giáng đòn đầu tiên vào âm mưu 'đánh nhanh, thắng nhanh', tạo điều kiện cho cả nước chuẩn bị lực lượng.",
+          "text": "Phát xít Đức đầu hàng Đồng minh không điều kiện (5-1945).",
+          "rationale": "Sai. Đây là điều kiện ở châu Âu, chưa tác động trực tiếp ngay lập tức đến Đông Dương như sự kiện Nhật đầu hàng.",
+          "isCorrect": false
+        },
+        {
+          "text": "Nhật Bản đầu hàng Đồng minh không điều kiện (8-1945).",
+          "rationale": "Đúng. Việc Nhật đầu hàng khiến quân Nhật ở Đông Dương hoang mang, chính phủ tay sai rệu rã, tạo thời cơ thuận lợi nhất.",
           "isCorrect": true
         },
         {
-          "text": "Chiến thắng Việt Bắc thu - đông năm 1947.",
-          "rationale": "Sai. Chiến thắng này làm phá sản hoàn toàn (chứ không phải đòn đầu tiên) kế hoạch đánh nhanh thắng nhanh.",
-          "isCorrect": false
-        },
-        {
-          "text": "Quân lệnh số 1 phát động Tổng khởi nghĩa.",
-          "rationale": "Sai. Đây là sự kiện trong Cách mạng tháng Tám năm 1945.",
+          "text": "Mặt trận Việt Minh ra đời (1941).",
+          "rationale": "Sai. Đây là sự chuẩn bị về lực lượng, không phải là yếu tố khách quan tạo thời cơ.",
           "isCorrect": false
         }
       ],
-      "hint": "Sự kiện mở đầu cuộc chiến tranh xâm lược Việt Nam lần thứ hai của Pháp."
+      "hint": "Đây là sự kiện khách quan diễn ra vào giữa tháng 8 năm 1945 liên quan đến tình hình Chiến tranh thế giới thứ hai."
     },
     {
       "question_number": 2,
-      "question": "Mục đích chính của cuộc chiến đấu ở các đô thị phía Bắc vĩ tuyến 16 (từ 19-12-1946) là gì?",
+      "question": "Bốn tỉnh nào giành được chính quyền sớm nhất trong cả nước (vào ngày 18-8-1945)?",
       "answeroption": [
         {
-          "text": "Tiêu diệt hoàn toàn lực lượng quân đội Pháp tại Hà Nội.",
-          "rationale": "Sai. Mục tiêu không phải là tiêu diệt hoàn toàn mà là tiêu hao và giam chân địch.",
+          "text": "Hà Nội, Huế, Sài Gòn, Bắc Giang.",
+          "rationale": "Sai. Hà Nội (19/8), Huế (23/8), Sài Gòn (25/8).",
           "isCorrect": false
         },
         {
-          "text": "Giam chân địch, tạo điều kiện cho cơ quan đầu não rút lên chiến khu.",
-          "rationale": "Đúng. Quân dân ta chủ động nổ súng để giam chân địch trong thành phố, bảo vệ an toàn cho việc di chuyển cơ quan đầu não lên chiến khu Việt Bắc.",
+          "text": "Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam.",
+          "rationale": "Đúng. Theo SGK trang 35, nhân dân 4 tỉnh này đã giành chính quyền sớm nhất trong cả nước vào ngày 18-8-1945.",
           "isCorrect": true
         },
         {
-          "text": "Giải phóng các đô thị lớn để lập chính quyền cách mạng.",
-          "rationale": "Sai. Ta chủ động rút khỏi đô thị để bảo toàn lực lượng kháng chiến lâu dài.",
+          "text": "Thái Nguyên, Tuyên Quang, Hà Nội, Hải Dương.",
+          "rationale": "Sai. Thái Nguyên giải phóng thị xã ngày 16/8 nhưng chưa phải là tỉnh giành chính quyền trọn vẹn sớm nhất.",
           "isCorrect": false
         },
         {
-          "text": "Ngăn chặn quân Pháp mở rộng xâm lược ra toàn miền Bắc.",
-          "rationale": "Sai. Mục đích chính là bảo vệ cuộc rút lui chiến lược, không phải ngăn chặn toàn diện ngay lập tức.",
+          "text": "Hải Dương, Quảng Ngãi, Bình Định, Bắc Giang.",
+          "rationale": "Sai. Quảng Ngãi và Bình Định không nằm trong nhóm 4 tỉnh đầu tiên.",
           "isCorrect": false
         }
       ],
-      "hint": "Chiến thuật 'trong đánh ngoài vây' được thực hiện để kéo dài thời gian cho hậu phương."
+      "hint": "Đây là 4 địa phương đã chớp thời cơ giành chính quyền ngay trước khi cuộc khởi nghĩa ở Hà Nội thắng lợi."
     },
     {
       "question_number": 3,
-      "question": "Chiến thắng nào của quân dân Việt Nam đã làm phá sản hoàn toàn chiến lược 'đánh nhanh, thắng nhanh' của thực dân Pháp?",
+      "question": "Sự kiện nào đánh dấu chế độ phong kiến Việt Nam hoàn toàn sụp đổ trong Cách mạng tháng Tám năm 1945?",
       "answeroption": [
         {
-          "text": "Chiến thắng Biên giới thu - đông 1950.",
-          "rationale": "Sai. Chiến thắng này khai thông biên giới và giành thế chủ động, không phải là sự kiện kết thúc chiến lược đánh nhanh thắng nhanh.",
-          "isCorrect": false
-        },
-        {
-          "text": "Cuộc chiến đấu ở các đô thị (1946-1947).",
-          "rationale": "Sai. Sự kiện này chỉ bước đầu làm phá sản kế hoạch đánh nhanh thắng nhanh.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chiến thắng Việt Bắc thu - đông 1947.",
-          "rationale": "Đúng. Với việc bảo vệ được cơ quan đầu não và bộ đội chủ lực, Pháp buộc phải chuyển từ 'đánh nhanh thắng nhanh' sang 'đánh lâu dài'.",
+          "text": "Vua Bảo Đại tuyên bố thoái vị (30-8-1945).",
+          "rationale": "Đúng. Sự kiện vua Bảo Đại thoái vị và trao ấn kiếm cho đại diện chính phủ lâm thời đánh dấu sự sụp đổ của chế độ phong kiến.",
           "isCorrect": true
         },
         {
-          "text": "Chiến thắng Điện Biên Phủ 1954.",
-          "rationale": "Sai. Đây là thắng lợi kết thúc cuộc kháng chiến.",
+          "text": "Khởi nghĩa giành thắng lợi ở Huế (23-8-1945).",
+          "rationale": "Sai. Đây là thắng lợi của khởi nghĩa tại địa phương, chưa phải là mốc chấm dứt pháp lý của triều đình phong kiến.",
+          "isCorrect": false
+        },
+        {
+          "text": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập (2-9-1945).",
+          "rationale": "Sai. Đây là sự kiện khai sinh ra nước Việt Nam Dân chủ Cộng hòa.",
+          "isCorrect": false
+        },
+        {
+          "text": "Uỷ ban Dân tộc giải phóng Việt Nam cải tổ thành Chính phủ lâm thời (28-8-1945).",
+          "rationale": "Sai. Đây là sự kiện về tổ chức bộ máy nhà nước mới.",
           "isCorrect": false
         }
       ],
-      "hint": "Chiến dịch mà Pháp tấn công lên căn cứ địa hòng tiêu diệt đầu não kháng chiến nhưng thất bại."
+      "hint": "Sự kiện diễn ra tại Ngọ Môn (Huế) khi vị vua cuối cùng của triều Nguyễn trao ấn kiếm cho cách mạng."
     },
     {
       "question_number": 4,
-      "question": "Ý nghĩa quan trọng nhất của Chiến dịch Biên giới thu - đông năm 1950 là gì?",
+      "question": "Nội dung nào sau đây KHÔNG phải là nguyên nhân thắng lợi của Cách mạng tháng Tám năm 1945?",
       "answeroption": [
         {
-          "text": "Làm phá sản bước đầu Kế hoạch Na-va của Pháp.",
-          "rationale": "Sai. Kế hoạch Na-va ra đời năm 1953.",
+          "text": "Sự lãnh đạo đúng đắn, sáng tạo của Đảng Cộng sản Đông Dương.",
+          "rationale": "Sai. Đây là nguyên nhân chủ quan hàng đầu.",
           "isCorrect": false
         },
         {
-          "text": "Buộc Pháp phải ký Hiệp định Giơ-ne-vơ.",
-          "rationale": "Sai. Đây là kết quả của chiến thắng Điện Biên Phủ 1954.",
+          "text": "Truyền thống yêu nước nồng nàn, tinh thần đoàn kết của nhân dân ta.",
+          "rationale": "Sai. Đây là nguyên nhân chủ quan quan trọng.",
           "isCorrect": false
         },
         {
-          "text": "Giành được thế chủ động chiến lược trên chiến trường chính Bắc Bộ.",
-          "rationale": "Đúng. Sau chiến dịch này, ta mở rộng căn cứ địa Việt Bắc, khai thông biên giới và nắm quyền chủ động tiến công.",
+          "text": "Sự giúp đỡ trực tiếp về quân sự của quân Đồng minh (Anh, Pháp).",
+          "rationale": "Đúng. Quân Đồng minh (Anh, Pháp) vào Đông Dương sau đó với mục đích giải giáp quân Nhật nhưng thực chất là giúp Pháp quay lại xâm lược hoặc chống phá, không giúp đỡ cách mạng.",
           "isCorrect": true
         },
         {
-          "text": "Giải phóng hoàn toàn vùng Tây Bắc.",
-          "rationale": "Sai. Tây Bắc được giải phóng chủ yếu trong chiến dịch Tây Bắc 1952.",
+          "text": "Chiến thắng của Hồng quân Liên Xô và quân Đồng minh chống phát xít.",
+          "rationale": "Sai. Đây là điều kiện khách quan thuận lợi.",
           "isCorrect": false
         }
       ],
-      "hint": "Sự thay đổi về vị thế của quân đội ta so với quân Pháp sau chiến dịch này."
+      "hint": "Hãy tìm yếu tố không xuất hiện hoặc trái ngược với thực tế lịch sử về sự hỗ trợ quốc tế trực tiếp cho cách mạng Việt Nam lúc bấy giờ."
     },
     {
       "question_number": 5,
-      "question": "Đại hội đại biểu lần thứ II của Đảng Cộng sản Đông Dương (2/1951) đã quyết định vấn đề gì quan trọng về tổ chức Đảng?",
+      "question": "Theo sách giáo khoa, ý nghĩa quốc tế của Cách mạng tháng Tám năm 1945 là gì?",
       "answeroption": [
         {
-          "text": "Thành lập Đảng Cộng sản Việt Nam.",
-          "rationale": "Sai. Đảng Cộng sản Việt Nam được thành lập năm 1930.",
+          "text": "Chấm dứt sự thống trị của thực dân Pháp và phát xít Nhật tại Lào và Campuchia.",
+          "rationale": "Sai. Chỉ chấm dứt tại Việt Nam, Lào và Campuchia giành độc lập ở mức độ khác nhau và sau đó Pháp quay lại.",
           "isCorrect": false
         },
         {
-          "text": "Đưa Đảng ra hoạt động công khai với tên gọi Đảng Lao động Việt Nam.",
-          "rationale": "Đúng. Đại hội quyết định tách Đảng Cộng sản Đông Dương, thành lập ở mỗi nước một đảng riêng. Ở Việt Nam là Đảng Lao động Việt Nam.",
+          "text": "Góp phần vào chiến thắng chủ nghĩa phát xít, cổ vũ các dân tộc thuộc địa đứng lên đấu tranh.",
+          "rationale": "Đúng. Cách mạng tháng Tám đã chọc thủng khâu yếu nhất của hệ thống thuộc địa, cổ vũ phong trào giải phóng dân tộc trên thế giới.",
           "isCorrect": true
         },
         {
-          "text": "Giải tán Đảng Cộng sản Đông Dương để thành lập Mặt trận Việt Minh.",
-          "rationale": "Sai. Mặt trận Việt Minh thành lập năm 1941.",
+          "text": "Đưa Việt Nam trở thành ủy viên thường trực của Hội đồng Bảo an Liên hợp quốc.",
+          "rationale": "Sai. Việt Nam chưa gia nhập LHQ vào thời điểm này.",
           "isCorrect": false
         },
         {
-          "text": "Hợp nhất Đảng Cộng sản Đông Dương với Đảng Xã hội Pháp.",
-          "rationale": "Sai. Không có sự kiện này.",
+          "text": "Thiết lập quan hệ ngoại giao với tất cả các nước xã hội chủ nghĩa.",
+          "rationale": "Sai. Phải đến năm 1950 Việt Nam mới thiết lập quan hệ ngoại giao với Trung Quốc, Liên Xô...",
           "isCorrect": false
         }
       ],
-      "hint": "Tên gọi mới của Đảng từ năm 1951."
+      "hint": "Tác động của Cách mạng tháng Tám đối với phong trào đấu tranh giải phóng dân tộc trên thế giới."
     },
     {
       "question_number": 6,
-      "question": "Điểm trọng tâm trong Kế hoạch Na-va (1953) của thực dân Pháp là gì?",
+      "question": "Ngay sau Cách mạng tháng Tám, tình thế của nước Việt Nam Dân chủ Cộng hòa được ví như:",
       "answeroption": [
         {
-          "text": "Xây dựng Điện Biên Phủ thành tập đoàn cứ điểm mạnh nhất Đông Dương.",
-          "rationale": "Sai. Điện Biên Phủ không nằm trong kế hoạch Na-va ban đầu mà là sự điều chỉnh sau khi bị ta tấn công.",
+          "text": "Nước sôi lửa bỏng.",
+          "rationale": "Sai. Cụm từ này không được dùng trong SGK để mô tả giai đoạn này.",
           "isCorrect": false
         },
         {
-          "text": "Tập trung lực lượng cơ động mạnh ở đồng bằng Bắc Bộ để giành thắng lợi quyết định.",
-          "rationale": "Đúng. Na-va muốn tập trung quân cơ động chiến lược để 'kết thúc chiến tranh trong danh dự' trong vòng 18 tháng.",
+          "text": "Ngàn cân treo sợi tóc.",
+          "rationale": "Đúng. Tình thế vô cùng khó khăn do thù trong, giặc ngoài, nạn đói, nạn dốt, khó khăn tài chính.",
           "isCorrect": true
         },
         {
-          "text": "Rút quân về nước để bảo toàn lực lượng.",
-          "rationale": "Sai. Pháp muốn giành thắng lợi quân sự rồi mới rút trong danh dự.",
+          "text": "Trứng để đầu đẳng.",
+          "rationale": "Sai. Đây là thành ngữ tương tự nhưng không phải thuật ngữ lịch sử chính thống trong SGK.",
           "isCorrect": false
         },
         {
-          "text": "Mở rộng chiến tranh sang Lào và Cam-pu-chia.",
-          "rationale": "Sai. Đây là hệ quả chứ không phải mục tiêu trọng tâm ban đầu.",
+          "text": "Tiến thoái lưỡng nan.",
+          "rationale": "Sai. Đảng ta vẫn có đường lối chủ động, không hoàn toàn bế tắc.",
           "isCorrect": false
         }
       ],
-      "hint": "Chiến lược tập trung quân để tạo 'quả đấm thép'."
+      "hint": "Cụm từ chỉ sự nguy hiểm cực độ, mong manh trước các thế lực thù địch và khó khăn chồng chất."
     },
     {
       "question_number": 7,
-      "question": "Tác dụng lớn nhất của cuộc Tiến công chiến lược Đông - Xuân 1953 - 1954 là gì?",
+      "question": "Sự kiện nào đánh dấu sự mở đầu cuộc chiến tranh xâm lược Việt Nam lần thứ hai của thực dân Pháp?",
       "answeroption": [
         {
-          "text": "Tiêu diệt toàn bộ sinh lực địch ở Đông Dương.",
-          "rationale": "Sai. Ta chỉ tiêu diệt một bộ phận sinh lực địch.",
+          "text": "Pháp gây hấn ở Lạng Sơn (11-1946).",
+          "rationale": "Sai. Đây là sự kiện leo thang trước ngày Toàn quốc kháng chiến.",
           "isCorrect": false
         },
         {
-          "text": "Giải phóng hoàn toàn vùng Tây Nguyên và Thượng Lào.",
-          "rationale": "Sai. Chỉ giải phóng một phần (Kon Tum, Thượng Lào...).",
+          "text": "Pháp nổ súng đánh chiếm Sài Gòn (23-9-1945).",
+          "rationale": "Đúng. Quân Pháp xả súng vào dân chúng và đánh úp trụ sở UBND Nam Bộ, mở đầu cuộc xâm lược lần 2.",
+          "isCorrect": true
+        },
+        {
+          "text": "Pháp gửi tối hậu thư đòi Chính phủ ta giải tán lực lượng tự vệ (18-12-1946).",
+          "rationale": "Sai. Đây là giọt nước tràn ly dẫn đến Lời kêu gọi toàn quốc kháng chiến.",
           "isCorrect": false
         },
         {
-          "text": "Làm phá sản bước đầu kế hoạch Na-va, buộc địch phải phân tán lực lượng.",
-          "rationale": "Đúng. Địch buộc phải phân tán quân ra 5 nơi (Điện Biên Phủ, Xê-nô, Plây-cu, Luông Pha-bang, Đồng bằng Bắc Bộ), không thể tập trung như kế hoạch.",
+          "text": "Quân Pháp theo chân quân Anh vào giải giáp quân Nhật (9-1945).",
+          "rationale": "Sai. Đây là hành động dọn đường, sự kiện nổ súng ngày 23/9 mới là mốc mở đầu chiến tranh.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Sự kiện diễn ra tại Nam Bộ chưa đầy một tháng sau ngày Độc lập."
+    },
+    {
+      "question_number": 8,
+      "question": "Chủ tịch Hồ Chí Minh đã ra 'Lời kêu gọi toàn quốc kháng chiến' vào thời gian nào?",
+      "answeroption": [
+        {
+          "text": "Đêm 23 tháng 9 năm 1945.",
+          "rationale": "Sai. Ngày Nam Bộ kháng chiến.",
+          "isCorrect": false
+        },
+        {
+          "text": "Đêm 19 tháng 12 năm 1946.",
+          "rationale": "Đúng. Đáp lại tối hậu thư và hành động xâm lược của Pháp, Chủ tịch Hồ Chí Minh đã ra lời kêu gọi này.",
+          "isCorrect": true
+        },
+        {
+          "text": "Ngày 02 tháng 9 năm 1945.",
+          "rationale": "Sai. Ngày Tuyên ngôn Độc lập.",
+          "isCorrect": false
+        },
+        {
+          "text": "Ngày 06 tháng 3 năm 1946.",
+          "rationale": "Sai. Ngày ký Hiệp định Sơ bộ.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Thời điểm bắt đầu cuộc kháng chiến toàn quốc lan rộng ra cả nước, đặc biệt là Hà Nội."
+    },
+    {
+      "question_number": 9,
+      "question": "Đường lối kháng chiến chống Pháp của Đảng ta được xác định là:",
+      "answeroption": [
+        {
+          "text": "Toàn dân, toàn diện, trường kì, tự lực cánh sinh và tranh thủ sự ủng hộ quốc tế.",
+          "rationale": "Đúng. Đây là nội dung cốt lõi của đường lối kháng chiến (SGK trang 40).",
+          "isCorrect": true
+        },
+        {
+          "text": "Đánh nhanh, thắng nhanh, dựa vào sự giúp đỡ của các nước xã hội chủ nghĩa.",
+          "rationale": "Sai. 'Đánh nhanh thắng nhanh' là phương châm của Pháp, không phải của ta.",
+          "isCorrect": false
+        },
+        {
+          "text": "Phòng ngự chiều sâu, chờ đợi thời cơ phản công.",
+          "rationale": "Sai. Đây chỉ là một phần chiến thuật trong giai đoạn đầu, không phải đường lối chung.",
+          "isCorrect": false
+        },
+        {
+          "text": "Dựa hoàn toàn vào sức mạnh quân sự của bộ đội chủ lực.",
+          "rationale": "Sai. Đường lối là 'toàn dân', không chỉ dựa vào bộ đội chủ lực.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Đường lối này nhấn mạnh vào sức mạnh tổng hợp của cả dân tộc và thời gian kháng chiến lâu dài."
+    },
+    {
+      "question_number": 10,
+      "question": "Mục đích chính của cuộc chiến đấu ở các đô thị phía Bắc vĩ tuyến 16 (từ 19-12-1946) là gì?",
+      "answeroption": [
+        {
+          "text": "Tiêu diệt hoàn toàn quân đội Pháp tại Hà Nội.",
+          "rationale": "Sai. Lực lượng ta chưa đủ mạnh để tiêu diệt hoàn toàn địch lúc này.",
+          "isCorrect": false
+        },
+        {
+          "text": "Giam chân quân Pháp, tạo điều kiện cho cơ quan đầu não rút lên chiến khu an toàn.",
+          "rationale": "Đúng. Mục tiêu là phá tan âm mưu 'đánh nhanh thắng nhanh' và bảo toàn lực lượng đầu não.",
+          "isCorrect": true
+        },
+        {
+          "text": "Giải phóng hoàn toàn thủ đô Hà Nội.",
+          "rationale": "Sai. Phải đến năm 1954 Hà Nội mới được giải phóng.",
+          "isCorrect": false
+        },
+        {
+          "text": "Tranh thủ sự ủng hộ của quân Đồng minh.",
+          "rationale": "Sai. Không phải mục đích quân sự trực tiếp của cuộc chiến đấu này.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Hành động này nhằm kéo dài thời gian để Trung ương Đảng và Chính phủ di chuyển về căn cứ địa Việt Bắc."
+    },
+    {
+      "question_number": 11,
+      "question": "Kết quả lớn nhất của chiến dịch Việt Bắc thu - đông năm 1947 là gì?",
+      "answeroption": [
+        {
+          "text": "Giải phóng hoàn toàn vùng biên giới Việt - Trung.",
+          "rationale": "Sai. Đây là kết quả của chiến dịch Biên giới 1950.",
+          "isCorrect": false
+        },
+        {
+          "text": "Làm phá sản hoàn toàn kế hoạch 'đánh nhanh, thắng nhanh' của thực dân Pháp.",
+          "rationale": "Đúng. Pháp buộc phải chuyển sang 'đánh lâu dài'.",
           "isCorrect": true
         },
         {
           "text": "Buộc Pháp phải ngồi vào bàn đàm phán Giơ-ne-vơ.",
-          "rationale": "Sai. Phải đến chiến thắng Điện Biên Phủ mới quyết định điều này.",
+          "rationale": "Sai. Phải đến sau Điện Biên Phủ 1954.",
+          "isCorrect": false
+        },
+        {
+          "text": "Tiêu diệt toàn bộ sinh lực địch ở Bắc Bộ.",
+          "rationale": "Sai. Chỉ tiêu diệt một bộ phận và bảo vệ được căn cứ địa.",
           "isCorrect": false
         }
       ],
-      "hint": "Kế hoạch Na-va muốn tập trung quân, ta buộc chúng phải làm ngược lại."
-    },
-    {
-      "question_number": 8,
-      "question": "Chiến thắng Điện Biên Phủ (1954) đóng vai trò quyết định như thế nào đối với cuộc kháng chiến chống Pháp?",
-      "answeroption": [
-        {
-          "text": "Giải phóng hoàn toàn đất nước Việt Nam.",
-          "rationale": "Sai. Chỉ giải phóng hoàn toàn miền Bắc.",
-          "isCorrect": false
-        },
-        {
-          "text": "Giáng đòn quyết định vào ý chí xâm lược của Pháp, xoay chuyển cục diện chiến tranh.",
-          "rationale": "Đúng. Thắng lợi này đập tan kế hoạch Na-va, tạo cơ sở quyết định cho việc ký Hiệp định Giơ-ne-vơ.",
-          "isCorrect": true
-        },
-        {
-          "text": "Buộc Mỹ phải trực tiếp đưa quân vào tham chiến.",
-          "rationale": "Sai. Mỹ can thiệp sâu hơn nhưng chưa đưa quân trực tiếp tham chiến ngay lúc đó.",
-          "isCorrect": false
-        },
-        {
-          "text": "Mở đầu cho sự sụp đổ của hệ thống thuộc địa Pháp trên toàn thế giới.",
-          "rationale": "Sai. Đây là ý nghĩa quốc tế, không phải vai trò trực tiếp với cuộc kháng chiến của ta.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Sự kiện 'lừng lẫy năm châu, chấn động địa cầu'."
-    },
-    {
-      "question_number": 9,
-      "question": "Nội dung nào sau đây KHÔNG phải là quy định của Hiệp định Giơ-ne-vơ năm 1954?",
-      "answeroption": [
-        {
-          "text": "Các nước cam kết tôn trọng độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của Việt Nam.",
-          "rationale": "Sai. Đây là nội dung đúng.",
-          "isCorrect": false
-        },
-        {
-          "text": "Hai bên thực hiện ngừng bắn, tập kết, chuyển quân.",
-          "rationale": "Sai. Đây là nội dung đúng.",
-          "isCorrect": false
-        },
-        {
-          "text": "Việt Nam sẽ thống nhất đất nước thông qua Tổng tuyển cử tự do vào tháng 7/1956.",
-          "rationale": "Sai. Đây là nội dung đúng.",
-          "isCorrect": false
-        },
-        {
-          "text": "Quân đội Pháp được phép đóng quân vĩnh viễn tại miền Nam Việt Nam.",
-          "rationale": "Đúng. Hiệp định quy định Pháp rút quân theo lộ trình, không có chuyện đóng quân vĩnh viễn.",
-          "isCorrect": true
-        }
-      ],
-      "hint": "Tìm điều khoản trái với nguyên tắc độc lập chủ quyền."
-    },
-    {
-      "question_number": 10,
-      "question": "Phong trào Đồng khởi (1959-1960) đánh dấu bước ngoặt nào của cách mạng miền Nam?",
-      "answeroption": [
-        {
-          "text": "Chuyển từ thế giữ gìn lực lượng sang thế tiến công.",
-          "rationale": "Đúng. Nghị quyết 15 cho phép sử dụng bạo lực cách mạng, đưa phong trào từ đấu tranh chính trị sang kết hợp vũ trang, giành quyền làm chủ.",
-          "isCorrect": true
-        },
-        {
-          "text": "Chuyển từ đấu tranh vũ trang sang đấu tranh chính trị.",
-          "rationale": "Sai. Ngược lại mới đúng.",
-          "isCorrect": false
-        },
-        {
-          "text": "Kết thúc hoàn toàn sự thống trị của chính quyền Ngô Đình Diệm.",
-          "rationale": "Sai. Chính quyền Diệm bị lật đổ năm 1963, Đồng khởi chỉ làm lung lay.",
-          "isCorrect": false
-        },
-        {
-          "text": "Bắt đầu cuộc kháng chiến chống chiến lược 'Chiến tranh cục bộ'.",
-          "rationale": "Sai. Chiến tranh cục bộ bắt đầu từ năm 1965.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Sự thay đổi về thế và lực của cách mạng sau Nghị quyết 15."
-    },
-    {
-      "question_number": 11,
-      "question": "Âm mưu cơ bản của chiến lược 'Chiến tranh đặc biệt' (1961-1965) của Mỹ ở miền Nam là gì?",
-      "answeroption": [
-        {
-          "text": "Dùng người Việt đánh người Việt.",
-          "rationale": "Đúng. Sử dụng quân đội Sài Gòn là chủ yếu, dưới sự chỉ huy của cố vấn Mỹ và vũ khí Mỹ.",
-          "isCorrect": true
-        },
-        {
-          "text": "Trực tiếp đưa quân Mỹ vào tham chiến.",
-          "rationale": "Sai. Đây là đặc điểm của 'Chiến tranh cục bộ'.",
-          "isCorrect": false
-        },
-        {
-          "text": "Mở rộng chiến tranh ra toàn Đông Dương.",
-          "rationale": "Sai. Đây là đặc điểm của 'Việt Nam hóa chiến tranh'.",
-          "isCorrect": false
-        },
-        {
-          "text": "Dùng sức mạnh không quân hủy diệt miền Bắc.",
-          "rationale": "Sai. Chiến tranh phá hoại miền Bắc diễn ra chủ yếu trong giai đoạn 'Chiến tranh cục bộ' và 'Việt Nam hóa'.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Sử dụng quân đội tay sai làm lực lượng chủ lực."
+      "hint": "Thất bại này buộc Pháp phải thay đổi chiến lược từ đánh nhanh sang đánh lâu dài."
     },
     {
       "question_number": 12,
-      "question": "Chiến thắng quân sự nào của quân dân miền Nam đã mở ra khả năng đánh bại hoàn toàn chiến lược 'Chiến tranh đặc biệt'?",
+      "question": "Chiến dịch nào đánh dấu bước ngoặt, đưa cuộc kháng chiến của ta chuyển sang giai đoạn chủ động tiến công?",
       "answeroption": [
         {
-          "text": "Chiến thắng Vạn Tường (1965).",
-          "rationale": "Sai. Vạn Tường chống 'Chiến tranh cục bộ'.",
+          "text": "Chiến dịch Việt Bắc thu - đông 1947.",
+          "rationale": "Sai. Đây là chiến dịch phản công bảo vệ căn cứ địa.",
           "isCorrect": false
         },
         {
-          "text": "Chiến thắng Ấp Bắc (1/1963).",
-          "rationale": "Đúng. Chiến thắng này chứng minh quân dân miền Nam có thể đánh bại các chiến thuật tân kỳ (trực thăng vận, thiết xa vận) của Mỹ.",
+          "text": "Chiến dịch Biên giới thu - đông 1950.",
+          "rationale": "Đúng. Ta giành quyền chủ động trên chiến trường chính Bắc Bộ, khai thông biên giới.",
           "isCorrect": true
         },
         {
-          "text": "Chiến thắng Bình Giã (1964).",
-          "rationale": "Sai. Bình Giã đánh dấu sự phá sản cơ bản, nhưng Ấp Bắc mới là mở đầu khả năng đánh bại.",
+          "text": "Chiến dịch Điện Biên Phủ 1954.",
+          "rationale": "Sai. Đây là chiến dịch quyết định kết thúc chiến tranh, diễn ra khi ta đã nắm quyền chủ động.",
           "isCorrect": false
         },
         {
-          "text": "Phong trào Đồng khởi (1960).",
-          "rationale": "Sai. Đồng Khởi diễn ra trước khi có 'Chiến tranh đặc biệt'.",
+          "text": "Cuộc tiến công chiến lược Đông - Xuân 1953 - 1954.",
+          "rationale": "Sai. Đây là giai đoạn phát triển cao của thế chủ động.",
           "isCorrect": false
         }
       ],
-      "hint": "Trận đánh dấy lên phong trào thi đua giết giặc lập công năm 1963."
+      "hint": "Chiến dịch nhằm khai thông biên giới Việt - Trung và mở rộng căn cứ địa Việt Bắc."
     },
     {
       "question_number": 13,
-      "question": "Điểm khác biệt lớn nhất về lực lượng giữa chiến lược 'Chiến tranh cục bộ' (1965-1968) so với 'Chiến tranh đặc biệt' là gì?",
+      "question": "Tại Đại hội đại biểu lần thứ II (tháng 2-1951), Đảng Cộng sản Đông Dương đã quyết định đổi tên thành:",
       "answeroption": [
         {
-          "text": "Có sự tham chiến trực tiếp của quân Mỹ và quân đồng minh.",
-          "rationale": "Đúng. 'Chiến tranh đặc biệt' chủ yếu dùng quân Sài Gòn, còn 'Cục bộ' Mỹ trực tiếp đưa quân viễn chinh vào.",
-          "isCorrect": true
-        },
-        {
-          "text": "Sử dụng vũ khí và phương tiện chiến tranh hiện đại của Mỹ.",
-          "rationale": "Sai. Cả hai chiến lược đều sử dụng.",
+          "text": "Đảng Cộng sản Việt Nam.",
+          "rationale": "Sai. Tên này có từ 1930 và sau này dùng lại, nhưng năm 1951 không dùng tên này.",
           "isCorrect": false
         },
         {
-          "text": "Có hệ thống cố vấn Mỹ chỉ huy.",
-          "rationale": "Sai. Cả hai chiến lược đều có cố vấn Mỹ.",
+          "text": "Đảng Lao động Việt Nam.",
+          "rationale": "Đúng. Đảng ra hoạt động công khai với tên gọi Đảng Lao động Việt Nam (SGK trang 41).",
           "isCorrect": false
         },
         {
-          "text": "Tiến hành dồn dân lập ấp chiến lược.",
-          "rationale": "Sai. Đây là thủ đoạn, không phải điểm khác biệt về lực lượng.",
+          "text": "Hội nghiên cứu chủ nghĩa Mác ở Đông Dương.",
+          "rationale": "Sai. Đây là tên bình phong trong giai đoạn 1945-1951.",
+          "isCorrect": false
+        },
+        {
+          "text": "Đảng Dân chủ Việt Nam.",
+          "rationale": "Sai. Đây là một đảng khác trong Mặt trận Việt Minh/Liên Việt.",
           "isCorrect": false
         }
       ],
-      "hint": "Sự xuất hiện của màu da khác trên chiến trường."
+      "hint": "Tên gọi mới của Đảng năm 1951 nhấn mạnh vai trò giai cấp và tính chất dân tộc của Đảng."
     },
     {
       "question_number": 14,
-      "question": "Ý nghĩa lớn nhất của cuộc Tổng tiến công và nổi dậy Xuân Mậu Thân 1968 là gì?",
+      "question": "Âm mưu chính của Pháp - Mỹ trong kế hoạch Na-va (1953) là gì?",
       "answeroption": [
         {
-          "text": "Giải phóng hoàn toàn miền Nam.",
-          "rationale": "Sai. Miền Nam giải phóng năm 1975.",
-          "isCorrect": false
-        },
-        {
-          "text": "Buộc Mỹ phải tuyên bố 'phi Mỹ hóa' chiến tranh, chấp nhận đàm phán ở Pa-ri.",
-          "rationale": "Đúng. Đòn đánh bất ngờ vào các đô thị đã làm lung lay ý chí xâm lược của Mỹ, buộc Mỹ xuống thang chiến tranh.",
+          "text": "Kết thúc chiến tranh trong danh dự sau 18 tháng.",
+          "rationale": "Đúng. Giành thắng lợi quân sự quyết định để buộc ta đàm phán theo điều kiện có lợi cho Pháp.",
           "isCorrect": true
         },
         {
-          "text": "Tiêu diệt hoàn toàn quân viễn chinh Mỹ.",
-          "rationale": "Sai. Quân Mỹ vẫn còn mạnh sau năm 1968.",
+          "text": "Kéo dài chiến tranh vô thời hạn để làm suy yếu Việt Nam.",
+          "rationale": "Sai. Mục tiêu là kết thúc nhanh trong 18 tháng.",
           "isCorrect": false
         },
         {
-          "text": "Buộc Mỹ phải ký ngay Hiệp định Pa-ri.",
-          "rationale": "Sai. Mỹ chỉ chấp nhận đàm phán, đến 1973 mới ký.",
+          "text": "Mở rộng chiến tranh sang Lào và Campuchia.",
+          "rationale": "Sai. Đây là hệ quả hành động, không phải mục tiêu bao trùm cuối cùng.",
+          "isCorrect": false
+        },
+        {
+          "text": "Rút quân hoàn toàn khỏi Đông Dương ngay lập tức.",
+          "rationale": "Sai. Kế hoạch nhằm giành thế mạnh quân sự trước.",
           "isCorrect": false
         }
       ],
-      "hint": "Sự kiện buộc Mỹ phải thừa nhận thất bại của 'Chiến tranh cục bộ'."
+      "hint": "Kế hoạch này hi vọng giành một thắng lợi quân sự quyết định để rút chân khỏi cuộc chiến trong tư thế kẻ mạnh."
     },
     {
       "question_number": 15,
-      "question": "Thủ đoạn ngoại giao xảo quyệt của Mỹ trong chiến lược 'Việt Nam hóa chiến tranh' là gì?",
+      "question": "Để phá tan kế hoạch Na-va, chủ trương chiến lược của Đảng ta trong Đông - Xuân 1953 - 1954 là gì?",
       "answeroption": [
         {
-          "text": "Kêu gọi Liên hợp quốc can thiệp vào Việt Nam.",
-          "rationale": "Sai.",
+          "text": "Tập trung lực lượng tấn công trực diện vào Hà Nội.",
+          "rationale": "Sai. Hà Nội là nơi địch mạnh, không phù hợp phương châm tránh chỗ mạnh.",
           "isCorrect": false
         },
         {
-          "text": "Thỏa hiệp với Trung Quốc, hòa hoãn với Liên Xô.",
-          "rationale": "Đúng. Mỹ lợi dụng mâu thuẫn Xô-Trung để hạn chế sự giúp đỡ của các nước này cho Việt Nam.",
+          "text": "Tấn công vào những hướng quan trọng về chiến lược mà địch tương đối yếu.",
+          "rationale": "Đúng. Nhằm buộc địch phải phân tán lực lượng đối phó (SGK trang 43).",
           "isCorrect": true
         },
         {
-          "text": "Cô lập Việt Nam trên trường quốc tế.",
-          "rationale": "Sai. Không phải thủ đoạn đặc trưng của giai đoạn này so với thỏa hiệp nước lớn.",
+          "text": "Dồn toàn bộ lực lượng lên đánh Điện Biên Phủ ngay từ đầu.",
+          "rationale": "Sai. Điện Biên Phủ ban đầu không có trong kế hoạch Na-va, sau mới thành điểm quyết chiến.",
           "isCorrect": false
         },
         {
-          "text": "Tăng cường viện trợ cho các nước Đông Nam Á.",
-          "rationale": "Sai.",
+          "text": "Phòng ngự chặt chẽ ở Việt Bắc, chờ địch đến để tiêu diệt.",
+          "rationale": "Sai. Ta chủ động tiến công, không thụ động phòng ngự.",
           "isCorrect": false
         }
       ],
-      "hint": "Mỹ tìm cách chia rẽ các nước xã hội chủ nghĩa."
+      "hint": "Phương châm 'tránh chỗ mạnh, đánh chỗ yếu' để điều động địch phân tán lực lượng."
     },
     {
       "question_number": 16,
-      "question": "Chiến thắng nào được mệnh danh là 'Điện Biên Phủ trên không' (1972)?",
+      "question": "Chiến thắng nào đã trực tiếp dẫn đến việc ký kết Hiệp định Giơ-ne-vơ năm 1954?",
       "answeroption": [
         {
-          "text": "Cuộc Tiến công chiến lược năm 1972 ở miền Nam.",
-          "rationale": "Sai. Đây là chiến thắng trên bộ.",
+          "text": "Chiến thắng Biên giới thu - đông 1950.",
+          "rationale": "Sai. Đây là chiến thắng khai thông biên giới.",
           "isCorrect": false
         },
         {
-          "text": "Việc đánh bại cuộc tập kích bằng máy bay B52 của Mỹ vào Hà Nội, Hải Phòng.",
-          "rationale": "Đúng. Trong 12 ngày đêm cuối năm 1972, quân dân miền Bắc đã đập tan uy thế không lực Hoa Kỳ.",
+          "text": "Chiến thắng Điện Biên Phủ.",
+          "rationale": "Đúng. Chiến thắng này đập tan ý chí xâm lược của Pháp, làm xoay chuyển cục diện chiến tranh.",
           "isCorrect": true
         },
         {
-          "text": "Chiến thắng Đường 9 - Nam Lào.",
-          "rationale": "Sai. Đây là chiến thắng năm 1971.",
+          "text": "Chiến thắng Đông - Xuân 1953 - 1954.",
+          "rationale": "Sai. Đây là chuỗi chiến thắng tạo đà, nhưng Điện Biên Phủ mới là đòn quyết định cuối cùng.",
           "isCorrect": false
         },
         {
-          "text": "Chiến thắng Quảng Trị.",
-          "rationale": "Sai. Đây là một phần của tiến công 1972 nhưng không gọi là Điện Biên Phủ trên không.",
+          "text": "Cuộc tiến công ở Tây Nguyên.",
+          "rationale": "Sai. Sự kiện này thuộc giai đoạn sau hoặc là một phần nhỏ của Đông Xuân.",
           "isCorrect": false
         }
       ],
-      "hint": "Chiến thắng trong 12 ngày đêm cuối năm 1972."
+      "hint": "Chiến thắng 'lừng lẫy năm châu, chấn động địa cầu'."
     },
     {
       "question_number": 17,
-      "question": "Hiệp định Pa-ri năm 1973 đã tạo ra thời cơ gì cho cách mạng miền Nam?",
+      "question": "Nội dung nào dưới đây phản ánh đúng vai trò của hậu phương trong cuộc kháng chiến chống Pháp (1945-1954)?",
       "answeroption": [
         {
-          "text": "Mỹ rút quân về nước, làm thay đổi so sánh lực lượng có lợi cho ta.",
-          "rationale": "Đúng. 'Mỹ cút' là điều kiện tiên quyết để tiến tới 'Ngụy nhào'.",
+          "text": "Là yếu tố quyết định nhất để giành thắng lợi quân sự.",
+          "rationale": "Sai. Yếu tố quyết định nhất thường là đường lối lãnh đạo, hậu phương là nhân tố thường xuyên.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cung cấp sức người, sức của cho tiền tuyến.",
+          "rationale": "Đúng. Xây dựng hậu phương vững mạnh về mọi mặt để chi viện cho tiền tuyến (SGK trang 44).",
           "isCorrect": true
         },
         {
-          "text": "Chính quyền Sài Gòn sụp đổ ngay lập tức.",
-          "rationale": "Sai. Chính quyền Sài Gòn vẫn tồn tại và phá hoại hiệp định.",
+          "text": "Trực tiếp tham gia các trận đánh lớn tiêu diệt địch.",
+          "rationale": "Sai. Nhiệm vụ chiến đấu là của tiền tuyến (tuy nhiên hậu phương cũng có chiến tranh du kích, nhưng vai trò chính là chi viện).",
           "isCorrect": false
         },
         {
-          "text": "Miền Bắc được hoàn toàn giải phóng.",
-          "rationale": "Sai. Miền Bắc đã giải phóng từ 1954.",
-          "isCorrect": false
-        },
-        {
-          "text": "Việt Nam thống nhất đất nước về mặt nhà nước.",
-          "rationale": "Sai. Điều này chỉ xảy ra sau 1975.",
+          "text": "Quyết định việc ký kết các hiệp định ngoại giao.",
+          "rationale": "Sai. Đây là vai trò của mặt trận ngoại giao và lãnh đạo Đảng/Nhà nước.",
           "isCorrect": false
         }
       ],
-      "hint": "Thực hiện lời dạy của Bác: 'Đánh cho Mỹ cút'."
+      "hint": "Nơi cung cấp lương thực, thực phẩm, vũ khí và nhân lực cho chiến trường."
     },
     {
       "question_number": 18,
-      "question": "Chiến thắng Phước Long (1/1975) có ý nghĩa gì quan trọng trong việc đề ra kế hoạch giải phóng miền Nam?",
-      "answeroption": [
-        {
-          "text": "Chứng tỏ quân đội Sài Gòn đã tan rã hoàn toàn.",
-          "rationale": "Sai. Quân Sài Gòn suy yếu nhưng chưa tan rã hoàn toàn.",
-          "isCorrect": false
-        },
-        {
-          "text": "Thăm dò khả năng can thiệp trở lại của Mỹ là rất hạn chế.",
-          "rationale": "Đúng. Mỹ chỉ phản ứng yếu ớt, chứng tỏ không dám quay lại tham chiến, củng cố quyết tâm giải phóng miền Nam của ta.",
-          "isCorrect": true
-        },
-        {
-          "text": "Mở toang cánh cửa tiến vào Sài Gòn.",
-          "rationale": "Sai. Đây là chiến thắng Xuân Lộc.",
-          "isCorrect": false
-        },
-        {
-          "text": "Giải phóng toàn bộ Tây Nguyên.",
-          "rationale": "Sai. Phước Long thuộc Đông Nam Bộ.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Đây là 'trận trinh sát chiến lược' để đo phản ứng của Mỹ."
-    },
-    {
-      "question_number": 19,
-      "question": "Chiến dịch nào đóng vai trò mở màn cho cuộc Tổng tiến công và nổi dậy Xuân 1975?",
-      "answeroption": [
-        {
-          "text": "Chiến dịch Huế - Đà Nẵng.",
-          "rationale": "Sai. Diễn ra sau Tây Nguyên.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chiến dịch Tây Nguyên.",
-          "rationale": "Đúng. Trận Buôn Ma Thuột (10/3) mở màn chiến dịch Tây Nguyên, làm rung chuyển hệ thống phòng thủ của địch.",
-          "isCorrect": true
-        },
-        {
-          "text": "Chiến dịch Hồ Chí Minh.",
-          "rationale": "Sai. Đây là chiến dịch cuối cùng.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chiến dịch Đường 14 - Phước Long.",
-          "rationale": "Sai. Đây là chiến thắng tạo đà, không nằm trong 3 chiến dịch lớn của cuộc Tổng tiến công.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Chiến dịch tấn công vào địa bàn chiến lược quan trọng ở miền Trung."
-    },
-    {
-      "question_number": 20,
-      "question": "Nguyên nhân quyết định nhất dẫn đến thắng lợi của cuộc kháng chiến chống Mỹ, cứu nước là gì?",
-      "answeroption": [
-        {
-          "text": "Sự ủng hộ của Liên Xô, Trung Quốc và nhân dân tiến bộ thế giới.",
-          "rationale": "Sai. Đây là nguyên nhân khách quan.",
-          "isCorrect": false
-        },
-        {
-          "text": "Sự lãnh đạo đúng đắn, sáng suốt của Đảng.",
-          "rationale": "Đúng. Đường lối độc lập, tự chủ, sáng tạo của Đảng là nhân tố hàng đầu quyết định mọi thắng lợi.",
-          "isCorrect": true
-        },
-        {
-          "text": "Tinh thần đoàn kết của ba nước Đông Dương.",
-          "rationale": "Sai. Đây là một nguyên nhân quan trọng nhưng không phải quyết định nhất.",
-          "isCorrect": false
-        },
-        {
-          "text": "Phong trào phản chiến ngay trong lòng nước Mỹ.",
-          "rationale": "Sai. Đây là nguyên nhân khách quan.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Nhân tố chủ quan hàng đầu lãnh đạo cách mạng."
-    },
-    {
-      "question_number": 21,
-      "question": "Nội dung nào phản ánh đúng bản chất của chiến lược 'Việt Nam hóa chiến tranh'?",
-      "answeroption": [
-        {
-          "text": "Chiến tranh xâm lược thực dân mới, dùng quân Sài Gòn thay dần quân Mỹ.",
-          "rationale": "Đúng. Mục tiêu là giảm xương máu người Mỹ nhưng vẫn giữ miền Nam bằng quân đội tay sai.",
-          "isCorrect": true
-        },
-        {
-          "text": "Chiến tranh tổng lực với sự tham gia tối đa của quân đội Mỹ.",
-          "rationale": "Sai. Mỹ đang rút quân.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chiến tranh giành dân, lấn đất bằng các biện pháp hòa bình.",
-          "rationale": "Sai. Đây là chiến tranh ác liệt.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chiến tranh dựa hoàn toàn vào lực lượng quân sự của các nước đồng minh.",
-          "rationale": "Sai. Dựa vào quân đội Sài Gòn là chính.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Thay đổi màu da trên xác chết."
-    },
-    {
-      "question_number": 22,
-      "question": "Sự kiện nào đánh dấu chế độ phong kiến Việt Nam hoàn toàn sụp đổ?",
-      "answeroption": [
-        {
-          "text": "Vua Bảo Đại tuyên bố thoái vị (30/8/1945).",
-          "rationale": "Đúng. Sự kiện này chấm dứt chế độ quân chủ hơn 1000 năm.",
-          "isCorrect": true
-        },
-        {
-          "text": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập.",
-          "rationale": "Sai. Đây là khai sinh chế độ mới.",
-          "isCorrect": false
-        },
-        {
-          "text": "Thực dân Pháp nổ súng xâm lược trở lại.",
-          "rationale": "Sai.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chính phủ Trần Trọng Kim từ chức.",
-          "rationale": "Sai.",
-          "isCorrect": false
-        }
-      ],
-      "hint": "Sự kiện diễn ra tại Huế trong Cách mạng tháng Tám."
-    },
-    {
-      "question_number": 23,
-      "question": "Phương châm tác chiến của ta trong chiến dịch Điện Biên Phủ đã thay đổi như thế nào?",
+      "question": "Phương châm tác chiến của chiến dịch Điện Biên Phủ đã được thay đổi như thế nào?",
       "answeroption": [
         {
           "text": "Từ 'đánh nhanh, thắng nhanh' sang 'đánh chắc, tiến chắc'.",
-          "rationale": "Đúng. Nhận thấy địch tăng cường phòng thủ, ta chuyển phương châm để đảm bảo thắng lợi.",
+          "rationale": "Đúng. Do đánh giá lại tình hình địch tăng cường phòng ngự kiên cố (SGK trang 43).",
           "isCorrect": true
-        },
-        {
-          "text": "Từ 'đánh du kích' sang 'đánh vận động'.",
-          "rationale": "Sai.",
-          "isCorrect": false
-        },
-        {
-          "text": "Từ 'đánh điểm, diệt viện' sang 'đánh công kiên'.",
-          "rationale": "Sai.",
-          "isCorrect": false
         },
         {
           "text": "Từ 'đánh chắc, tiến chắc' sang 'đánh nhanh, thắng nhanh'.",
           "rationale": "Sai. Ngược lại mới đúng.",
           "isCorrect": false
+        },
+        {
+          "text": "Từ 'đánh du kích' sang 'đánh vận động'.",
+          "rationale": "Sai. Đây là hình thức chiến thuật, không phải phương châm chiến dịch cụ thể này.",
+          "isCorrect": false
+        },
+        {
+          "text": "Từ 'đánh điểm, diệt viện' sang 'tổng công kích'.",
+          "rationale": "Sai. Không phải nội dung thay đổi phương châm tại Điện Biên Phủ.",
+          "isCorrect": false
         }
       ],
-      "hint": "Quyết định khó khăn nhất trong cuộc đời chỉ huy của Đại tướng Võ Nguyên Giáp."
+      "hint": "Sự thay đổi này nhằm đảm bảo 'chắc thắng' khi Pháp đã xây dựng Điện Biên Phủ thành tập đoàn cứ điểm mạnh."
+    },
+    {
+      "question_number": 19,
+      "question": "Ý nghĩa lịch sử quan trọng nhất của Hiệp định Giơ-ne-vơ năm 1954 là gì?",
+      "answeroption": [
+        {
+          "text": "Các nước tham dự hội nghị cam kết tôn trọng các quyền dân tộc cơ bản của ba nước Đông Dương.",
+          "rationale": "Đúng. Bao gồm độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ (SGK trang 44).",
+          "isCorrect": true
+        },
+        {
+          "text": "Quân đội Pháp phải rút khỏi miền Nam Việt Nam ngay lập tức.",
+          "rationale": "Sai. Pháp rút dần và có thời hạn chuyển quân.",
+          "isCorrect": false
+        },
+        {
+          "text": "Việt Nam được thống nhất ngay sau khi ký hiệp định.",
+          "rationale": "Sai. Việt Nam tạm thời bị chia cắt và dự kiến tổng tuyển cử sau 2 năm.",
+          "isCorrect": false
+        },
+        {
+          "text": "Mỹ cam kết không can thiệp vào Đông Dương.",
+          "rationale": "Sai. Mỹ không ký vào tuyên bố cuối cùng và sau đó nhảy vào thay chân Pháp.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Văn bản pháp lý quốc tế đầu tiên ghi nhận đầy đủ các quyền độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của Việt Nam."
+    },
+    {
+      "question_number": 20,
+      "question": "Nguyên nhân chủ quan quan trọng nhất dẫn đến thắng lợi của cuộc kháng chiến chống thực dân Pháp (1945 - 1954) là gì?",
+      "answeroption": [
+        {
+          "text": "Sự ủng hộ của các nước xã hội chủ nghĩa.",
+          "rationale": "Sai. Đây là nguyên nhân khách quan.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sự lãnh đạo sáng suốt của Đảng, đứng đầu là Chủ tịch Hồ Chí Minh.",
+          "rationale": "Đúng. Với đường lối chính trị, quân sự đúng đắn là nhân tố quyết định hàng đầu (SGK trang 44).",
+          "isCorrect": true
+        },
+        {
+          "text": "Tinh thần đoàn kết chiến đấu của ba nước Đông Dương.",
+          "rationale": "Sai. Đây là một nguyên nhân quan trọng nhưng sự lãnh đạo của Đảng mới là then chốt nhất.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sự suy yếu của thực dân Pháp sau Chiến tranh thế giới thứ hai.",
+          "rationale": "Sai. Đây là điều kiện thuận lợi khách quan.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Yếu tố dẫn đường, vạch ra đường lối kháng chiến đúng đắn."
+    },
+    {
+      "question_number": 21,
+      "question": "Trong Cách mạng tháng Tám năm 1945, lệnh Tổng khởi nghĩa được ban bố trong văn kiện nào?",
+      "answeroption": [
+        {
+          "text": "Chỉ thị 'Nhật - Pháp bắn nhau và hành động của chúng ta'.",
+          "rationale": "Sai. Chỉ thị này ra đời tháng 3/1945 để phát động cao trào kháng Nhật.",
+          "isCorrect": false
+        },
+        {
+          "text": "Quân lệnh số 1 của Ủy ban Khởi nghĩa toàn quốc.",
+          "rationale": "Đúng. Ban bố đêm 13-8-1945 (SGK trang 34).",
+          "isCorrect": true
+        },
+        {
+          "text": "Tuyên ngôn Độc lập.",
+          "rationale": "Sai. Văn kiện này tuyên bố sau khi khởi nghĩa thành công.",
+          "isCorrect": false
+        },
+        {
+          "text": "Lời kêu gọi toàn quốc kháng chiến.",
+          "rationale": "Sai. Văn kiện này thuộc giai đoạn chống Pháp năm 1946.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Văn kiện này có nội dung: 'Giờ tổng khởi nghĩa đã đánh... Dưới mệnh lệnh của Ủy ban chỉ huy, hãy nhất tề đứng dậy...'."
+    },
+    {
+      "question_number": 22,
+      "question": "Nội dung nào sau đây phản ánh đúng về tính chất của Cách mạng tháng Tám năm 1945?",
+      "answeroption": [
+        {
+          "text": "Là cuộc cách mạng tư sản dân quyền.",
+          "rationale": "Sai. Cách mạng tháng Tám mang tính chất dân tộc dân chủ nhân dân, không phải tư sản kiểu cũ.",
+          "isCorrect": false
+        },
+        {
+          "text": "Là cuộc cách mạng giải phóng dân tộc điển hình.",
+          "rationale": "Đúng. Mục tiêu hàng đầu là giành độc lập dân tộc, lật đổ ách thống trị của thực dân, phong kiến (SGK trang 36 phân tích ý nghĩa).",
+          "isCorrect": true
+        },
+        {
+          "text": "Là cuộc cách mạng xã hội chủ nghĩa.",
+          "rationale": "Sai. Giai đoạn này chưa tiến lên CNXH ngay.",
+          "isCorrect": false
+        },
+        {
+          "text": "Là cuộc nội chiến cách mạng.",
+          "rationale": "Sai. Đây là cuộc khởi nghĩa giành chính quyền từ tay ngoại bang và tay sai, không đơn thuần là nội chiến.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Nhiệm vụ hàng đầu của cuộc cách mạng này là đánh đuổi xâm lược, giành lại độc lập."
+    },
+    {
+      "question_number": 23,
+      "question": "Sự kiện nào diễn ra vào ngày 19-8-1945 có ý nghĩa quyết định đến thắng lợi của Cách mạng tháng Tám?",
+      "answeroption": [
+        {
+          "text": "Khởi nghĩa giành chính quyền ở Huế.",
+          "rationale": "Sai. Huế là ngày 23/8.",
+          "isCorrect": false
+        },
+        {
+          "text": "Khởi nghĩa giành chính quyền thắng lợi ở Hà Nội.",
+          "rationale": "Đúng. Thắng lợi ở thủ đô tạo đà tâm lý và vị thế cho cả nước (SGK trang 35).",
+          "isCorrect": true
+        },
+        {
+          "text": "Khởi nghĩa giành chính quyền ở Sài Gòn.",
+          "rationale": "Sai. Sài Gòn là ngày 25/8.",
+          "isCorrect": false
+        },
+        {
+          "text": "Vua Bảo Đại thoái vị.",
+          "rationale": "Sai. Sự kiện này diễn ra ngày 30/8.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Cuộc mít tinh lớn tại Nhà hát Lớn đã biến thành cuộc biểu tình đánh chiếm Phủ Khâm sai."
     },
     {
       "question_number": 24,
-      "question": "Trong kháng chiến chống Mỹ, miền Bắc đóng vai trò như thế nào?",
+      "question": "Chiến thắng nào của quân dân ta trong cuộc kháng chiến chống Pháp được ví như 'Cái mốc bằng vàng'?",
       "answeroption": [
         {
-          "text": "Tiền tuyến lớn, trực tiếp quyết định thắng lợi.",
-          "rationale": "Sai. Miền Nam là tiền tuyến lớn.",
-          "isCorrect": false
-        },
-        {
-          "text": "Hậu phương lớn, chi viện sức người, sức của cho miền Nam.",
-          "rationale": "Đúng. Miền Bắc xây dựng CNXH và là chỗ dựa vững chắc cho miền Nam.",
-          "isCorrect": true
-        },
-        {
-          "text": "Vùng đệm trung lập.",
+          "text": "Chiến thắng Việt Bắc 1947.",
           "rationale": "Sai.",
           "isCorrect": false
         },
         {
-          "text": "Căn cứ địa duy nhất của cách mạng cả nước.",
-          "rationale": "Sai. Cách mạng miền Nam cũng có căn cứ tại chỗ.",
+          "text": "Chiến thắng Điện Biên Phủ 1954.",
+          "rationale": "Đúng. Cụm từ này thường dùng để ca ngợi tầm vóc vĩ đại của Điện Biên Phủ (kết thúc ách thống trị thực dân).",
+          "isCorrect": true
+        },
+        {
+          "text": "Chiến thắng Biên giới 1950.",
+          "rationale": "Sai.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cuộc tiến công Đông Xuân 1953-1954.",
+          "rationale": "Sai.",
           "isCorrect": false
         }
       ],
-      "hint": "Vai trò của hậu phương đối với tiền tuyến."
+      "hint": "Thắng lợi này được đánh giá là đã 'ghi tên vào lịch sử dân tộc như một Bạch Đằng, một Chi Lăng...'."
     },
     {
       "question_number": 25,
-      "question": "Trận then chốt mở màn cho chiến dịch Tây Nguyên (3/1975) là trận đánh vào đâu?",
+      "question": "Trong chiến dịch Điện Biên Phủ, tướng Pháp nào đã bị bắt sống?",
       "answeroption": [
         {
-          "text": "Kon Tum.",
-          "rationale": "Sai. Đánh nghi binh ở Kon Tum và Pleiku.",
+          "text": "Lơ-c莱c (Leclerc).",
+          "rationale": "Sai.",
           "isCorrect": false
         },
         {
-          "text": "Buôn Ma Thuột.",
-          "rationale": "Đúng. Ta đánh vào nơi địch phòng thủ sơ hở nhất nhưng có vị trí chiến lược.",
+          "text": "Đờ Ca-xtơ-ri (De Castries).",
+          "rationale": "Đúng. Chiều 7-5-1954, tướng Đờ Ca-xtơ-ri cùng toàn bộ Bộ tham mưu bị bắt sống (SGK trang 43).",
           "isCorrect": true
         },
         {
-          "text": "Pleiku.",
-          "rationale": "Sai.",
+          "text": "Na-va (Navarre).",
+          "rationale": "Sai. Na-va là tổng chỉ huy ở Đông Dương, không trực tiếp chỉ huy tại hầm Điện Biên Phủ.",
           "isCorrect": false
         },
         {
-          "text": "Đà Lạt.",
-          "rationale": "Sai.",
+          "text": "Đờ Lát đơ Tát-xi-nhi (De Lattre de Tassigny).",
+          "rationale": "Sai. Ông này đã về nước và mất trước đó.",
           "isCorrect": false
         }
       ],
-      "hint": "Thủ phủ của vùng Tây Nguyên, nơi ta đánh trận mở đầu."
+      "hint": "Viên tướng chỉ huy tập đoàn cứ điểm Điện Biên Phủ."
     },
     {
       "question_number": 26,
-      "question": "Điểm giống nhau cơ bản giữa Hiệp định Giơ-ne-vơ (1954) và Hiệp định Pa-ri (1973) là gì?",
+      "question": "Kết quả nào KHÔNG thuộc về Chiến dịch Biên giới thu - đông năm 1950?",
       "answeroption": [
         {
-          "text": "Đều quy định thời gian rút quân của quân đội nước ngoài.",
-          "rationale": "Đúng. Cả hai hiệp định đều buộc quân xâm lược (Pháp, Mỹ) phải rút khỏi Việt Nam.",
+          "text": "Giải phóng vùng biên giới Việt - Trung từ Cao Bằng đến Đình Lập.",
+          "rationale": "Sai. Đây là kết quả đúng.",
+          "isCorrect": false
+        },
+        {
+          "text": "Chọc thủng 'Hành lang Đông - Tây' của Pháp.",
+          "rationale": "Sai. Đây là kết quả đúng.",
+          "isCorrect": false
+        },
+        {
+          "text": "Buộc Pháp phải ký Hiệp định Giơ-ne-vơ.",
+          "rationale": "Đúng. Sự kiện này diễn ra năm 1954 sau Điện Biên Phủ, không phải sau chiến dịch Biên giới 1950.",
           "isCorrect": true
         },
         {
-          "text": "Đều dẫn đến việc thống nhất đất nước ngay lập tức.",
-          "rationale": "Sai. Đất nước vẫn bị chia cắt sau cả hai hiệp định.",
-          "isCorrect": false
-        },
-        {
-          "text": "Đều quy định giới tuyến quân sự tạm thời là vĩ tuyến 17.",
-          "rationale": "Sai. Chỉ có Hiệp định Giơ-ne-vơ quy định vĩ tuyến 17.",
-          "isCorrect": false
-        },
-        {
-          "text": "Đều do các nước lớn áp đặt.",
-          "rationale": "Sai. Hiệp định Pa-ri là kết quả đấu tranh kiên cường của ta.",
+          "text": "Khai thông đường liên lạc với các nước xã hội chủ nghĩa.",
+          "rationale": "Sai. Đây là kết quả đúng.",
           "isCorrect": false
         }
       ],
-      "hint": "Mục tiêu chung là buộc đối phương chấm dứt chiến tranh và về nước."
+      "hint": "Hãy tìm kết quả thuộc về giai đoạn cuối cuộc kháng chiến (1954) chứ không phải năm 1950."
     },
     {
       "question_number": 27,
-      "question": "Hội nghị Ban Chấp hành Trung ương Đảng lần thứ 15 (1959) đã xác định phương hướng cơ bản của cách mạng miền Nam là gì?",
+      "question": "Bài học kinh nghiệm về 'thời cơ' trong Cách mạng tháng Tám năm 1945 là:",
       "answeroption": [
         {
-          "text": "Khởi nghĩa giành chính quyền bằng con đường bạo lực.",
-          "rationale": "Đúng. Đảng quyết định cho nhân dân miền Nam sử dụng bạo lực cách mạng để tự giải phóng.",
+          "text": "Chủ động tạo thời cơ và kịp thời chớp thời cơ.",
+          "rationale": "Đúng. Đảng ta đã chuẩn bị lực lượng (tạo thời cơ) và khi Nhật đầu hàng (thời cơ đến) đã phát động khởi nghĩa ngay (SGK trang 36).",
           "isCorrect": true
         },
         {
-          "text": "Đấu tranh chính trị hòa bình.",
-          "rationale": "Sai. Giai đoạn 1954-1958 là đấu tranh chính trị.",
+          "text": "Chỉ cần chờ đợi thời cơ đến là hành động.",
+          "rationale": "Sai. Nếu không chuẩn bị (chủ động) thì thời cơ đến cũng không làm gì được.",
           "isCorrect": false
         },
         {
-          "text": "Thương lượng ngoại giao.",
-          "rationale": "Sai.",
+          "text": "Tranh thủ sự giúp đỡ của bên ngoài để tạo thời cơ.",
+          "rationale": "Sai. Nội lực là chính.",
           "isCorrect": false
         },
         {
-          "text": "Nhờ sự can thiệp của quốc tế.",
-          "rationale": "Sai.",
+          "text": "Tiến hành khởi nghĩa ở bất cứ thời điểm nào khi lực lượng đã mạnh.",
+          "rationale": "Sai. Phải đúng thời cơ (kẻ thù hoang mang, quần chúng sẵn sàng) mới giảm thiểu đổ máu.",
           "isCorrect": false
         }
       ],
-      "hint": "Con đường duy nhất khi kẻ thù dùng bạo lực đàn áp."
+      "hint": "Sự kết hợp giữa chuẩn bị chu đáo bên trong và nắm bắt điều kiện khách quan bên ngoài."
     },
     {
       "question_number": 28,
-      "question": "Thắng lợi nào sau đây chứng tỏ quân dân miền Nam có khả năng đánh bại chiến lược 'Chiến tranh cục bộ' về mặt quân sự?",
+      "question": "Thắng lợi của Cách mạng tháng Tám năm 1945 đã mở ra kỉ nguyên mới nào cho dân tộc Việt Nam?",
       "answeroption": [
         {
-          "text": "Chiến thắng Vạn Tường (8/1965).",
-          "rationale": "Đúng. Trận đầu đánh thắng quân Mỹ, chứng tỏ ta có thể đánh và thắng Mỹ.",
+          "text": "Kỉ nguyên độc lập, tự do và đi lên chủ nghĩa xã hội.",
+          "rationale": "Sai. Cụm từ 'đi lên chủ nghĩa xã hội' chính xác hơn cho giai đoạn sau 1975 hoặc miền Bắc sau 1954. Cách mạng tháng 8 mở ra kỉ nguyên độc lập, tự do, nhân dân làm chủ.",
+          "isCorrect": false
+        },
+        {
+          "text": "Kỉ nguyên độc lập, tự do, nhân dân lao động làm chủ đất nước.",
+          "rationale": "Đúng. Theo SGK trang 36: 'mở ra kỉ nguyên mới trong lịch sử dân tộc: kỉ nguyên độc lập, tự do, nhân dân lao động làm chủ đất nước'.",
           "isCorrect": true
         },
         {
-          "text": "Chiến thắng Ấp Bắc (1963).",
-          "rationale": "Sai. Ấp Bắc chống 'Chiến tranh đặc biệt'.",
+          "text": "Kỉ nguyên hội nhập và phát triển toàn diện.",
+          "rationale": "Sai. Đây là giai đoạn Đổi mới sau này.",
           "isCorrect": false
         },
         {
-          "text": "Cuộc Tổng tiến công Mậu Thân 1968.",
-          "rationale": "Sai. Mậu Thân là đòn quyết định buộc Mỹ xuống thang, còn Vạn Tường là mở đầu khẳng định khả năng thắng.",
-          "isCorrect": false
-        },
-        {
-          "text": "Chiến thắng Đường 9 - Nam Lào.",
-          "rationale": "Sai. Diễn ra trong giai đoạn 'Việt Nam hóa'.",
+          "text": "Kỉ nguyên công nghiệp hóa, hiện đại hóa.",
+          "rationale": "Sai. Đây là nhiệm vụ của giai đoạn sau.",
           "isCorrect": false
         }
       ],
-      "hint": "Trận đánh được coi là 'Ấp Bắc' đối với quân Mỹ."
+      "hint": "Từ thân phận nô lệ, người dân Việt Nam đã trở thành người chủ của đất nước."
     },
     {
       "question_number": 29,
-      "question": "Trong chiến dịch Hồ Chí Minh, thời điểm nào đánh dấu sự toàn thắng?",
+      "question": "Trong những năm 1951 - 1953, mặt trận nào được thành lập nhằm tăng cường khối đoàn kết ba nước Đông Dương?",
       "answeroption": [
         {
-          "text": "10 giờ 45 phút ngày 30/4/1975, xe tăng tiến vào Dinh Độc Lập.",
-          "rationale": "Sai. Đây là thời điểm tiến vào.",
+          "text": "Mặt trận Việt Minh.",
+          "rationale": "Sai. Đây là mặt trận của riêng Việt Nam (giai đoạn trước).",
           "isCorrect": false
         },
         {
-          "text": "11 giờ 30 phút ngày 30/4/1975, lá cờ cách mạng tung bay trên nóc Dinh Độc Lập.",
-          "rationale": "Đúng. Đánh dấu sự sụp đổ hoàn toàn của chính quyền Sài Gòn tại trung tâm.",
+          "text": "Mặt trận Liên Việt.",
+          "rationale": "Sai. Đây là mặt trận hợp nhất Việt Minh và Hội Liên Việt của Việt Nam.",
+          "isCorrect": false
+        },
+        {
+          "text": "Liên minh nhân dân Việt - Miên - Lào.",
+          "rationale": "Đúng. Được thành lập tháng 3-1951 để tăng cường đoàn kết 3 nước (SGK trang 41).",
           "isCorrect": true
         },
         {
-          "text": "Dương Văn Minh tuyên bố đầu hàng.",
-          "rationale": "Sai. Tuyên bố diễn ra sau đó một chút.",
-          "isCorrect": false
-        },
-        {
-          "text": "Ngày 2/5/1975, giải phóng hoàn toàn miền Nam.",
-          "rationale": "Sai. Câu hỏi hỏi về thời điểm chiến dịch Hồ Chí Minh toàn thắng.",
+          "text": "Mặt trận Dân chủ Đông Dương.",
+          "rationale": "Sai. Đây là mặt trận giai đoạn 1936-1939.",
           "isCorrect": false
         }
       ],
-      "hint": "Hình ảnh lá cờ trên nóc phủ Tổng thống ngụy."
+      "hint": "Tổ chức liên minh chiến đấu giữa nhân dân Việt Nam, Campuchia (Miên) và Lào."
     },
     {
       "question_number": 30,
-      "question": "Ý nghĩa quốc tế to lớn của thắng lợi cuộc kháng chiến chống Mỹ là gì?",
+      "question": "Ngày 19-12-1946, sự kiện lịch sử nào đã diễn ra?",
       "answeroption": [
         {
-          "text": "Làm sụp đổ hoàn toàn chủ nghĩa thực dân cũ.",
-          "rationale": "Sai. Kháng chiến chống Pháp mới góp phần làm tan rã chủ nghĩa thực dân cũ.",
+          "text": "Pháp tấn công lên Việt Bắc.",
+          "rationale": "Sai. Việt Bắc là năm 1947.",
           "isCorrect": false
         },
         {
-          "text": "Cổ vũ phong trào giải phóng dân tộc và đảo lộn chiến lược toàn cầu của Mỹ.",
-          "rationale": "Đúng. Thắng lợi này là đòn giáng mạnh vào chủ nghĩa thực dân mới của Mỹ.",
+          "text": "Chủ tịch Hồ Chí Minh ra Lời kêu gọi toàn quốc kháng chiến.",
+          "rationale": "Đúng. Đánh dấu sự bắt đầu cuộc kháng chiến toàn quốc.",
           "isCorrect": true
         },
         {
-          "text": "Giúp Lào và Cam-pu-chia giải phóng đất nước.",
-          "rationale": "Sai. Đây là sự phối hợp chiến đấu, không phải ý nghĩa bao trùm toàn cầu.",
+          "text": "Đại hội đại biểu lần thứ II của Đảng.",
+          "rationale": "Sai. Đại hội II là năm 1951.",
           "isCorrect": false
         },
         {
-          "text": "Chấm dứt Chiến tranh lạnh trên thế giới.",
-          "rationale": "Sai. Chiến tranh lạnh kết thúc năm 1989-1991.",
+          "text": "Chiến thắng Điện Biên Phủ.",
+          "rationale": "Sai. Điện Biên Phủ là năm 1954.",
           "isCorrect": false
         }
       ],
-      "hint": "Tác động đến uy thế của đế quốc Mỹ trên trường quốc tế."
+      "hint": "Sự kiện mở đầu cho 9 năm kháng chiến chống Pháp."
     },
     {
       "question_number": 31,
-      "question": "Đọc đoạn tư liệu sau và trả lời các câu hỏi: \"Chúng ta muốn hòa bình, chúng ta phải nhân nhượng. Nhưng chúng ta càng nhân nhượng, thực dân Pháp càng lấn tới, vì chúng quyết tâm cướp nước ta lần nữa!\" (Lời kêu gọi toàn quốc kháng chiến, Hồ Chí Minh).",
+      "question": "Nội dung nào sau đây thể hiện tính chất 'nhân văn' trong chính sách của Việt Minh đối với quân đội Nhật sau khi Nhật đầu hàng?",
       "answeroption": [
         {
-          "text": "a) Đoạn tư liệu trên được trích dẫn từ bản Tuyên ngôn Độc lập (2/9/1945).",
-          "rationale": "Sai. Đoạn trích từ 'Lời kêu gọi toàn quốc kháng chiến' (19/12/1946).",
+          "text": "Tiêu diệt toàn bộ quân Nhật còn sót lại.",
+          "rationale": "Sai.",
           "isCorrect": false
         },
         {
-          "text": "b) Câu nói thể hiện thiện chí hòa bình của Chính phủ Việt Nam Dân chủ Cộng hòa nhưng không được Pháp đáp lại.",
-          "rationale": "Đúng. Phản ánh nỗ lực đàm phán (Hiệp định Sơ bộ, Tạm ước) nhưng Pháp vẫn bội ước.",
+          "text": "Khoan hồng với tù binh, tạo điều kiện cho họ hồi hương.",
+          "rationale": "Đúng. Chính sách của ta là thêm bạn bớt thù, nhân đạo với kẻ thù đã đầu hàng.",
           "isCorrect": true
         },
         {
-          "text": "c) Sự kiện dẫn đến lời kêu gọi này là Pháp gửi tối hậu thư đòi tước khí giới của tự vệ Hà Nội (18/12/1946).",
-          "rationale": "Đúng. Hành động này là giọt nước tràn ly buộc ta phải nổ súng.",
-          "isCorrect": true
+          "text": "Giam giữ vô thời hạn để làm con tin.",
+          "rationale": "Sai.",
+          "isCorrect": false
         },
         {
-          "text": "d) Lời kêu gọi này đánh dấu sự mở đầu của cuộc kháng chiến chống Mỹ cứu nước.",
-          "rationale": "Sai. Đây là mở đầu kháng chiến chống Pháp.",
+          "text": "Giao nộp ngay cho quân Đồng minh xét xử.",
+          "rationale": "Sai. Ta chủ động xử lý tình huống linh hoạt.",
           "isCorrect": false
         }
       ],
-      "hint": "Đoạn trích mở đầu cho cuộc kháng chiến toàn quốc 1946."
+      "hint": "Chính sách thể hiện sự khoan dung và yêu chuộng hòa bình của dân tộc ta."
     },
     {
       "question_number": 32,
-      "question": "Đọc đoạn tư liệu về Chiến dịch Điện Biên Phủ: \"Phương châm chiến dịch là 'đánh chắc, tiến chắc'. Quân ta đã xây dựng hệ thống giao thông hào, vây lấn, bóc gỡ dần từng cứ điểm của địch, cắt đứt đường tiếp tế hàng không...\"",
+      "question": "Trong chiến dịch Điện Biên Phủ, khẩu hiệu nào thể hiện quyết tâm cao nhất của quân và dân ta?",
       "answeroption": [
         {
-          "text": "a) Phương châm 'đánh chắc, tiến chắc' được giữ nguyên từ đầu đến cuối quá trình chuẩn bị chiến dịch.",
-          "rationale": "Sai. Ban đầu phương châm là 'đánh nhanh, giải quyết nhanh', sau đó mới thay đổi.",
+          "text": "Quyết tử để Tổ quốc quyết sinh.",
+          "rationale": "Sai. Đây là khẩu hiệu của chiến sĩ Hà Nội mùa đông năm 1946.",
           "isCorrect": false
         },
         {
-          "text": "b) Chiến thuật 'vây lấn' bằng hệ thống giao thông hào là nét đặc sắc của nghệ thuật quân sự Việt Nam trong chiến dịch này.",
-          "rationale": "Đúng. Hệ thống hào giúp quân ta áp sát đồn địch, hạn chế thương vong do hỏa lực mạnh.",
+          "text": "Quyết chiến, quyết thắng.",
+          "rationale": "Đúng. Lá cờ 'Quyết chiến quyết thắng' đã được trao cho các đơn vị lập công và cắm trên hầm Đờ Ca-xtơ-ri (SGK trang 43).",
           "isCorrect": true
         },
         {
-          "text": "c) Việc cắt đứt đường tiếp tế hàng không đã khiến tập đoàn cứ điểm Điện Biên Phủ bị cô lập hoàn toàn.",
-          "rationale": "Đúng. Sân bay Mường Thanh bị khống chế khiến Pháp không thể tiếp viện hiệu quả.",
-          "isCorrect": true
+          "text": "Thà hy sinh tất cả chứ nhất định không chịu mất nước.",
+          "rationale": "Sai. Đây là trích Lời kêu gọi toàn quốc kháng chiến 1946.",
+          "isCorrect": false
         },
         {
-          "text": "d) Chiến dịch này diễn ra trong khuôn khổ cuộc tiến công chiến lược Đông - Xuân 1950 - 1951.",
-          "rationale": "Sai. Diễn ra trong Đông - Xuân 1953 - 1954.",
+          "text": "Xẻ dọc Trường Sơn đi cứu nước.",
+          "rationale": "Sai. Đây là khẩu hiệu thời chống Mỹ.",
           "isCorrect": false
         }
       ],
-      "hint": "Xem xét sự thay đổi phương châm tác chiến."
+      "hint": "Dòng chữ được thêu trên lá cờ trao thưởng luân lưu của Bác Hồ trong chiến dịch."
     },
     {
       "question_number": 33,
-      "question": "Đọc đoạn tư liệu về Hiệp định Pa-ri 1973: \"Hoa Kỳ và các nước khác tôn trọng độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của nước Việt Nam... Hoa Kỳ rút hết quân đội của mình và của các nước đồng minh...\"",
+      "question": "Vai trò của lực lượng vũ trang trong Cách mạng tháng Tám 1945 là gì?",
       "answeroption": [
         {
-          "text": "a) Hiệp định Pa-ri đánh dấu sự kết thúc hoàn toàn cuộc kháng chiến chống Mỹ cứu nước.",
-          "rationale": "Sai. Chiến tranh vẫn tiếp diễn với quân đội Sài Gòn đến năm 1975.",
+          "text": "Lực lượng đông đảo nhất, quyết định thắng lợi.",
+          "rationale": "Sai. Lực lượng chính trị mới là đông đảo nhất.",
           "isCorrect": false
         },
         {
-          "text": "b) Việc Mỹ rút quân đã làm thay đổi so sánh lực lượng trên chiến trường có lợi cho cách mạng.",
-          "rationale": "Đúng. Mất đi chỗ dựa quân viễn chinh Mỹ, quân đội Sài Gòn suy yếu rõ rệt.",
+          "text": "Lực lượng nòng cốt, hỗ trợ lực lượng chính trị.",
+          "rationale": "Sai. Trong Cách mạng tháng 8, lực lượng vũ trang đóng vai trò xung kích, hỗ trợ lực lượng chính trị (lực lượng chính trị đóng vai trò quyết định chủ yếu).",
           "isCorrect": true
         },
         {
-          "text": "c) Hiệp định quy định xóa bỏ ngay lập tức chính quyền Sài Gòn và thống nhất đất nước.",
-          "rationale": "Sai. Hiệp định công nhận sự tồn tại của hai chính quyền, hai quân đội, hai vùng kiểm soát ở miền Nam.",
+          "text": "Chỉ làm nhiệm vụ bảo vệ cơ quan đầu não.",
+          "rationale": "Sai.",
           "isCorrect": false
         },
         {
-          "text": "d) Thắng lợi của trận 'Điện Biên Phủ trên không' là nhân tố quyết định buộc Mỹ phải ký hiệp định này.",
-          "rationale": "Đúng. Thất bại trên bầu trời Hà Nội buộc Mỹ phải chấp nhận ký kết để rút chân ra khỏi Việt Nam.",
-          "isCorrect": true
+          "text": "Không tham gia trực tiếp vào việc giành chính quyền.",
+          "rationale": "Sai.",
+          "isCorrect": false
         }
       ],
-      "hint": "Phân tích tác động của việc Mỹ rút quân ('Mỹ cút')."
+      "hint": "Lực lượng xung kích, làm đòn bẩy cho quần chúng nổi dậy."
+    },
+    {
+      "question_number": 34,
+      "question": "Chiến thắng nào của ta đã làm thất bại âm mưu 'dùng người Việt đánh người Việt, lấy chiến tranh nuôi chiến tranh' của Pháp?",
+      "answeroption": [
+        {
+          "text": "Các chiến dịch ở đồng bằng Bắc Bộ (1951-1953).",
+          "rationale": "Sai.",
+          "isCorrect": false
+        },
+        {
+          "text": "Chiến cuộc Đông - Xuân 1953 - 1954 và Điện Biên Phủ.",
+          "rationale": "Đúng. Đánh bại ý chí xâm lược và các kế hoạch quân sự của Pháp (vốn dựa trên việc huy động nhân lực, vật lực tại chỗ).",
+          "isCorrect": true
+        },
+        {
+          "text": "Chiến dịch Việt Bắc 1947.",
+          "rationale": "Sai. Lúc này Pháp chưa hoàn thiện chính sách dùng người Việt đánh người Việt.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cuộc chiến đấu ở các đô thị 1946.",
+          "rationale": "Sai.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Thắng lợi cuối cùng buộc Pháp phải ký Hiệp định Giơ-ne-vơ, chấm dứt hoàn toàn sự thống trị."
+    },
+    {
+      "question_number": 35,
+      "question": "Thắng lợi của cuộc kháng chiến chống Pháp (1945-1954) đã:",
+      "answeroption": [
+        {
+          "text": "Hoàn thành cuộc cách mạng dân tộc dân chủ nhân dân trên cả nước.",
+          "rationale": "Sai. Mới chỉ giải phóng miền Bắc.",
+          "isCorrect": false
+        },
+        {
+          "text": "Giải phóng miền Bắc, tạo cơ sở để giải phóng hoàn toàn miền Nam.",
+          "rationale": "Đúng. Miền Bắc được giải phóng, đi lên CNXH, làm hậu phương lớn cho tiền tuyến miền Nam (SGK trang 45).",
+          "isCorrect": true
+        },
+        {
+          "text": "Đánh bại hoàn toàn chiến lược toàn cầu của đế quốc Mỹ.",
+          "rationale": "Sai. Chỉ đánh bại một bước can thiệp của Mỹ.",
+          "isCorrect": false
+        },
+        {
+          "text": "Xóa bỏ hoàn toàn giai cấp bóc lột trên cả nước.",
+          "rationale": "Sai. Miền Nam vẫn còn dưới ách thống trị của Mỹ - Diệm.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Kết quả trực tiếp đối với vùng lãnh thổ từ vĩ tuyến 17 trở ra Bắc."
     }
   ]
 }
