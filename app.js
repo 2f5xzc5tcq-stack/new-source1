@@ -6,6 +6,7 @@ const app = {
     state: {
       currentSub: null,
       lastType: null,
+      tempExamType: null,
       totalQ: 0,
       questions: [],
       questionIds: [],
@@ -16,7 +17,10 @@ const app = {
       timer: null,
       isReview: false,
       isSubmitted: false,
-      filterMode: 'all'
+      mode: 'exam',
+      filterMode: 'all',
+      file: null,
+      startedAt: 0
     }
   },
 
@@ -114,8 +118,7 @@ const app = {
       sub.locked = false
       return true
     }
-    const note = sub.lockNote || sub.note || `Môn ${sub.name} đang khóa. Nhập mã để mở:`
-    const code = prompt(note) || ''
+    const code = prompt(sub.lockNote || `Môn ${sub.name} đang khóa. Nhập mã để mở:`) || ''
     if (String(sub.unlock ?? '').trim() && code.trim() === String(sub.unlock).trim()) {
       localStorage.setItem(`unlocked_subject_${sub.id}`, '1')
       sub.locked = false
@@ -130,8 +133,7 @@ const app = {
   async tryUnlockExam(sub, type, lockInfo) {
     if (!lockInfo?.locked) return true
     if (this.isExamUnlocked(sub.id, type)) return true
-    const note = lockInfo.note || `Bài ${lockInfo.name || type.toUpperCase()} của môn ${sub.name} đang khóa. Nhập mã mở:`
-    const code = prompt(note) || ''
+    const code = prompt(lockInfo.note || 'Nhập mã để mở:') || ''
     if (String(lockInfo.unlock ?? '').trim() && code.trim() === String(lockInfo.unlock).trim()) {
       localStorage.setItem(`unlocked_exam_${sub.id}_${type}`, '1')
       alert('Đã mở khóa bài kiểm tra!')
@@ -266,19 +268,41 @@ const app = {
     this.switchView('home')
   },
 
+  // LOGIC MỞ MODAL CHỌN MODE
+  openModeModal() {
+    document.getElementById('mode-modal').classList.remove('hidden')
+  },
+
+  closeModeModal() {
+    document.getElementById('mode-modal').classList.add('hidden')
+  },
+
+  confirmStart(mode) {
+    this.closeModeModal()
+    if (this.data.state.tempExamType) {
+        this.startExam(this.data.state.tempExamType, true, mode)
+    }
+  },
+
   onExamTileClick(type) {
     const sub = this.data.state.currentSub
     if (!sub) return
     const cfg = this.getExamConfig(sub, type)
     const lockInfo = cfg.lockInfo || {}
     const locked = (lockInfo.locked ?? this.settings.lockedByDefaultExam ?? false) && !this.isExamUnlocked(sub.id, type)
+    
     if (locked) {
       this.tryUnlockExam(sub, type, { ...lockInfo, name: cfg.name }).then(ok => {
-        if (ok) this.startExam(type)
+        if (ok) {
+            this.data.state.tempExamType = type;
+            this.openModeModal();
+        }
       })
       return
     }
-    this.startExam(type)
+    
+    this.data.state.tempExamType = type;
+    this.openModeModal();
   },
 
   idxToLetter(i) {
@@ -337,7 +361,8 @@ const app = {
       bookmarks: Array.from(st.bookmarks),
       timeLeft: st.timeLeft,
       isSubmitted: st.isSubmitted,
-      startedAt: st.startedAt
+      startedAt: st.startedAt,
+      mode: st.mode
     }
     localStorage.setItem(key, JSON.stringify(payload))
   },
@@ -347,7 +372,7 @@ const app = {
     localStorage.removeItem(key)
   },
 
-  async startExam(type, forceNew = false) {
+  async startExam(type, forceNew = false, mode = 'exam') {
     const sub = this.data.state.currentSub
     if (!sub) return
     const cfg = this.getExamConfig(sub, type)
@@ -362,23 +387,46 @@ const app = {
       return
     }
 
-    const seedString = `${this.sessionId}|${sub.id}|${type}|${cfg.file}|${Date.now()}`
+    const key = this.sessionKey(sub.id, type)
+    const saved = forceNew ? null : this.loadExamSession(key)
+
+    let questions = []
+    let questionIds = []
+    let timeLeft = cfg.t * 60
+    let answers = {}
+    let bookmarks = new Set()
+    let startedAt = Date.now()
+    let currentMode = mode
+
+    if (saved && !saved.isSubmitted && saved.file === cfg.file && Array.isArray(saved.questionIds) && saved.questionIds.length > 0) {
+        currentMode = saved.mode || mode
+        questionIds = saved.questionIds.filter(i => i >= 0 && i < bank.length)
+        questions = questionIds.map(i => bank[i])
+        timeLeft = typeof saved.timeLeft === 'number' ? saved.timeLeft : timeLeft
+        answers = saved.answers || {}
+        bookmarks = new Set(saved.bookmarks || [])
+        startedAt = saved.startedAt
+    }
+
+    const finalSeedTime = (saved && !forceNew) ? saved.startedAt : Date.now()
+    const seedString = `${this.sessionId}|${sub.id}|${type}|${cfg.file}|${finalSeedTime}`
     const seed = this.hashSeed(seedString)
     const rng = this.rngMulberry32(seed)
 
-    const indices = Array.from({ length: bank.length }, (_, i) => i)
-    for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1))
-      const tmp = indices[i]
-      indices[i] = indices[j]
-      indices[j] = tmp
+    if (questionIds.length === 0) {
+      const indices = Array.from({ length: bank.length }, (_, i) => i)
+      for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1))
+        const tmp = indices[i]
+        indices[i] = indices[j]
+        indices[j] = tmp
+      }
+      const limit = cfg.q ? cfg.q : bank.length
+      const takeN = Math.min(limit, indices.length)
+      questionIds = indices.slice(0, takeN)
     }
 
-    const limit = cfg.q ? cfg.q : bank.length
-    const takeN = Math.min(limit, indices.length)
-    const selectedIndices = indices.slice(0, takeN)
-
-    const shuffledQuestions = selectedIndices.map(i => {
+    const shuffledQuestions = questionIds.map(i => {
       const originalQ = bank[i]
       const qCopy = JSON.parse(JSON.stringify(originalQ))
       const originalOpts = this.getOptions(qCopy)
@@ -402,30 +450,41 @@ const app = {
       keyMap[idx + 1] = this.getCorrectIndex(opts)
     })
 
+    questions = shuffledQuestions
+
     clearInterval(this.data.state.timer)
 
     this.data.state = {
       currentSub: sub,
       lastType: type,
-      totalQ: shuffledQuestions.length,
-      questions: shuffledQuestions,
-      questionIds: selectedIndices, 
+      totalQ: questions.length,
+      questions: questions,
+      questionIds: questionIds, 
       key: keyMap,
-      answers: {},
-      bookmarks: new Set(),
-      timeLeft: cfg.t * 60,
+      answers: answers,
+      bookmarks: bookmarks,
+      timeLeft: timeLeft,
       timer: null,
       isReview: false,
       isSubmitted: false,
       file: cfg.file,
-      startedAt: Date.now(),
-      filterMode: 'all'
+      startedAt: startedAt,
+      filterMode: 'all',
+      mode: currentMode
     }
+
+    if (forceNew) this.data.state.mode = mode
 
     this.saveExamSession()
 
     document.getElementById('quiz-title-display').innerText = sub.name
-    document.getElementById('quiz-status-text').innerText = `${cfg.name} • ${shuffledQuestions.length} câu`
+    document.getElementById('quiz-status-text').innerText = `${cfg.name} • ${questions.length} câu`
+
+    const trainingBadge = document.getElementById('training-mode-badge')
+    if (trainingBadge) {
+        if (this.data.state.mode === 'training') trainingBadge.classList.remove('hidden')
+        else trainingBadge.classList.add('hidden')
+    }
 
     document.getElementById('timer-container').classList.remove('hidden')
     document.getElementById('mobile-action-bar').classList.remove('hidden')
@@ -471,7 +530,7 @@ const app = {
 
     let filterHtml = ''
     if (st.isReview) {
-        const btnClass = (mode) => `px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${st.filterMode === mode ? 'bg-blue-600 text-white border-blue-600' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50'}`
+        const btnClass = (mode) => `px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${st.filterMode === mode ? 'bg-blue-600 text-white border-blue-600 shadow-md' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'}`
         filterHtml = `
         <div class="flex items-center gap-3 mb-6 sticky top-0 z-20 bg-slate-50/95 dark:bg-slate-900/95 p-2 backdrop-blur-sm -mx-2 px-4">
             <span class="text-xs font-bold text-slate-400 uppercase"><i class="fa-solid fa-filter"></i> Lọc:</span>
@@ -494,11 +553,13 @@ const app = {
 
       const hint = q.hint || q.suggestion || ''
       const hintBox = (hint && !st.isReview) ? `
-         <div class="mt-3">
-            <button onclick="app.toggleElement('hint-content-${qi}')" class="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline">
-              <i class="fa-solid fa-lightbulb"></i> Xem gợi ý
+         <div class="mt-2 mb-4">
+            <button onclick="app.toggleElement('hint-content-${qi}')" 
+                class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50 rounded-full transition-all hover:bg-amber-100 dark:hover:bg-amber-900/30 active:scale-95 shadow-sm">
+                <i class="fa-regular fa-lightbulb text-sm"></i>
+                <span>Gợi ý</span>
             </button>
-            <div id="hint-content-${qi}" class="hidden mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 text-sm rounded-xl border border-blue-100 dark:border-blue-800/50 leading-relaxed">
+            <div id="hint-content-${qi}" class="hidden mt-3 p-3 bg-amber-50/80 dark:bg-[#1f1d15] text-sm text-slate-700 dark:text-slate-300 rounded-2xl border border-amber-100 dark:border-amber-900/30 leading-relaxed animate-fade-in shadow-sm">
                ${hint}
             </div>
          </div>
@@ -512,8 +573,10 @@ const app = {
           }
       }
 
-      const explainBox = (explainText && st.isReview) ? `
-        <div id="explain-box-${qi}" class="mt-4 border-t border-slate-100 dark:border-slate-700/50 pt-4">
+      const isShowResult = st.isReview || (st.mode === 'training' && userAns != undefined)
+
+      const explainBox = (explainText && isShowResult) ? `
+        <div id="explain-box-${qi}" class="mt-4 border-t border-slate-100 dark:border-slate-700/50 pt-4 animate-fade-in">
           <button onclick="app.toggleExplanation(${qi})" class="w-full flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-4 py-3 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
             <span><i class="fa-solid fa-book-open text-emerald-500 mr-2"></i>Giải thích chi tiết</span>
             <i id="explain-icon-${qi}" class="fa-solid fa-chevron-down rotate-icon transition-transform duration-300 open"></i>
@@ -529,7 +592,7 @@ const app = {
         let reviewClass = ""
         let reviewIcon = ""
 
-        if (st.isReview) {
+        if (isShowResult) {
            if (oi === correctIdx) {
              reviewClass = "!border-green-500 !bg-green-50 dark:!bg-green-900/20"
              reviewIcon = `<div class="ml-auto text-green-600 dark:text-green-400 font-bold text-[10px] uppercase tracking-wider bg-green-100 dark:bg-green-900/40 px-2 py-0.5 rounded">Đúng</div>`
@@ -547,7 +610,7 @@ const app = {
                    class="peer sr-only" 
                    onchange="app.onAnswer(${qi}, ${oi})" 
                    ${isChecked} 
-                   ${st.isReview ? 'disabled' : ''}>
+                   ${(st.isReview || (st.mode === 'training' && userAns != undefined)) ? 'disabled' : ''}>
 
             <div class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 
                         hover:border-blue-400 dark:hover:border-blue-500/50 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-all duration-200
@@ -577,7 +640,7 @@ const app = {
       }).join('')
 
       return `
-        <div id="q-${qi}" class="bg-white dark:bg-[#1e293b] p-5 md:p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm mb-6 transition-all hover:shadow-md">
+        <div id="q-${qi}" class="bg-white dark:bg-[#1e293b] p-5 md:p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm mb-6 transition-all hover:shadow-md animate-fade-in">
           
           <div class="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100 dark:border-slate-700/50">
             <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded">
@@ -588,7 +651,7 @@ const app = {
             </button>
           </div>
 
-          <div class="text-lg font-semibold text-slate-800 dark:text-slate-100 leading-relaxed mb-6">
+          <div class="text-lg font-semibold text-slate-800 dark:text-slate-100 leading-relaxed mb-4">
             ${q.text || q.question || ''}
           </div>
           
@@ -635,6 +698,9 @@ const app = {
           if (userAns == undefined) cls = 'bg-slate-200 dark:bg-slate-800 text-slate-400 opacity-50'
           else if (Number(userAns) === correctIdx) cls = 'bg-emerald-500 text-white shadow-sm border border-emerald-400'
           else cls = 'bg-red-500 text-white shadow-sm border border-red-400'
+        } else if (st.mode === 'training' && userAns != undefined) {
+          if (Number(userAns) === correctIdx) cls = 'bg-emerald-500 text-white shadow-sm border border-emerald-400'
+          else cls = 'bg-red-500 text-white shadow-sm border border-red-400'
         }
         
         const mark = st.bookmarks.has(qi) ? `<div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full border border-white dark:border-slate-800 z-10 shadow-sm"></div>` : ''
@@ -662,9 +728,13 @@ const app = {
 
   onAnswer(qi, oi) {
     const st = this.data.state
-    if (st.isReview || st.isSubmitted) return
+    if (st.isReview || (st.mode === 'training' && st.answers[qi] != undefined)) return
     st.answers[qi] = oi
     this.saveExamSession()
+    
+    if (st.mode === 'training') {
+        this.renderQuestions()
+    }
     this.renderPalette()
   },
 
