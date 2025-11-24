@@ -207,36 +207,41 @@ const app = {
     const sub = this.data.state.currentSub
     if (!sub) return
     const tiles = Array.from(document.querySelectorAll('.exam-tile[data-exam-type]'))
+    
+    // Map số lượng câu mặc định để hiển thị nếu không load được file
+    const defaultCounts = { '15m': 10, '45m': 30, 'gk1': 40, 'ck1': 50, 'gk2': 40, 'ck2': 50, 'hk': 50 }
+
     await Promise.all(tiles.map(async tile => {
       const type = tile.dataset.examType
       const cfg = this.getExamConfig(sub, type)
       const lockInfo = cfg.lockInfo || {}
       const locked = (lockInfo.locked ?? this.settings.lockedByDefaultExam ?? false) && !this.isExamUnlocked(sub.id, type)
 
-      // Xử lý UI khi khóa: Mờ đi một chút
+      // Xử lý UI khóa/mở
       tile.classList.toggle('opacity-75', locked)
-      // Nếu muốn đen trắng khi khóa thì giữ dòng dưới, không thì bỏ đi cho đẹp
-      // tile.classList.toggle('grayscale', locked)
-
-      // Hiển thị Badge LOCKED
       const badge = tile.querySelector('.exam-locked-badge')
       if (badge) badge.classList.toggle('hidden', !locked)
 
-      // Cập nhật tiêu đề nếu có trong config
+      // Cập nhật tiêu đề
       const h3 = tile.querySelector('h3')
       if (cfg.title && h3) h3.textContent = cfg.title
 
-      // Lấy số lượng câu hỏi thực tế
+      // --- SỬA LOGIC ĐẾM CÂU HỎI (Fix lỗi 0 câu) ---
       let qCount = cfg.q
+      // Nếu cấu hình là null (để lấy hết), ta thử load file để đếm
       if (qCount == null) {
         const bank = await this.loadQuestionBank(cfg.file)
-        qCount = bank ? bank.length : 0
+        if (bank && bank.length > 0) {
+          qCount = bank.length
+        } else {
+          // Nếu load lỗi hoặc = 0, lấy số mặc định để hiển thị cho đẹp
+          qCount = defaultCounts[type] || 0
+        }
       }
 
-      // Cập nhật dòng Meta: 10 câu • 15 phút • Mức độ Dễ
+      // Cập nhật dòng Meta
       const meta = tile.querySelector('[data-exam-meta]')
       if (meta) {
-        // Format đúng kiểu trong ảnh
         const levelTxt = cfg.level ? ` • ${cfg.level}` : ''
         meta.textContent = `${qCount} câu • ${cfg.t} phút${levelTxt}`
       }
