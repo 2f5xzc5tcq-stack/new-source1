@@ -24,12 +24,12 @@
       "icon": "fa-landmark",
       "file": "lichsu/lichsu_15p.json",
 
-      "locked": false,
+      "locked": true,
       "unlock": "",
       "note": "Sử mở miễn phí, chỉ làm được bài 15 phút",
 
       "exams": {
-        "15m": { "locked": false, "unlock": "", "note": "Bài 15 phút Sử mở miễn phí" },
+        "15m": { "locked": true, "unlock": "", "note": "Bài 15 phút Sử mở miễn phí" },
 
         "45m": { "locked": true, "unlock": "", "note": "Bài 1 tiết Sử đang khóa. Nhập mã để mở:" },
         "gk1": { "locked": true, "unlock": "", "note": "GK1 Sử đang khóa. Nhập mã để mở:" },
