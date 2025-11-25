@@ -19,17 +19,23 @@
           animation: {
             'fade-in': 'fadeIn 0.3s ease-out',
             'slide-up': 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            'blob': 'blob 7s infinite',
           },
           keyframes: {
             fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-            slideUp: { '0%': { transform: 'translateY(10px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
+            slideUp: { '0%': { transform: 'translateY(10px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            }
           }
         }
       }
     }
   </script>
 
-  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
@@ -54,8 +60,17 @@
 
 <body class="bg-gray-50 dark:bg-[#0f172a] text-slate-800 dark:text-slate-200 h-screen flex flex-col overflow-hidden transition-colors duration-300 font-sans">
   
-  <!-- Header -->
-  <header class="sticky top-0 z-30 px-4 py-3 flex justify-between items-center shrink-0 transition-colors duration-300 backdrop-blur-md border-b border-gray-100 bg-white/90 dark:bg-[#0f172a]/90 dark:border-slate-800 dark:shadow-slate-900/50">
+  <!-- BACKGROUND GRADIENT BLOBS (HIỆU ỨNG LOANG MÀU) -->
+  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-600/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-indigo-600/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
+    <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-400/20 dark:bg-purple-600/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-4000"></div>
+  </div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas" class="fixed inset-0 z-0 pointer-events-none opacity-60"></canvas>
+
+  <header class="relative z-10 sticky top-0 px-4 py-3 flex justify-between items-center shrink-0 transition-colors duration-300 backdrop-blur-md border-b border-gray-100/50 bg-white/70 dark:bg-[#0f172a]/70 dark:border-slate-800 dark:shadow-slate-900/50">
     <div class="flex items-center gap-3 cursor-pointer group" onclick="app.goHome()">
       <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
         <i class="fa-solid fa-graduation-cap text-lg"></i>
@@ -66,14 +81,24 @@
       </div>
     </div>
 
-    <button onclick="app.toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center text-slate-600 dark:text-yellow-400 focus:outline-none">
-      <i class="fa-solid fa-moon dark:hidden text-lg transition-transform hover:-rotate-12"></i>
-      <i class="fa-solid fa-sun hidden dark:block text-lg transition-transform hover:rotate-45"></i>
-    </button>
+    <div class="flex items-center gap-3">
+        <button onclick="app.goToCountdown()" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-sm font-bold border border-indigo-100 dark:border-indigo-800/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Thi THPT 2026</span>
+        </button>
+
+        <button onclick="app.goToCountdown()" class="md:hidden w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center border border-indigo-100 dark:border-indigo-800/30">
+             <i class="fa-solid fa-calendar-days text-sm"></i>
+        </button>
+
+        <button onclick="app.toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center text-slate-600 dark:text-yellow-400 focus:outline-none">
+          <i class="fa-solid fa-moon dark:hidden text-lg transition-transform hover:-rotate-12"></i>
+          <i class="fa-solid fa-sun hidden dark:block text-lg transition-transform hover:rotate-45"></i>
+        </button>
+    </div>
   </header>
 
-  <!-- VIEW: HOME -->
-  <div id="view-home" class="flex-1 overflow-y-auto p-4 md:p-8 animate-fade-in">
+  <div id="view-home" class="relative z-10 flex-1 overflow-y-auto p-4 md:p-8 animate-fade-in">
     <div class="max-w-6xl mx-auto pb-10">
       <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Chọn môn học</h2>
       <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Kho đề thi trắc nghiệm bám sát cấu trúc 2025</p>
@@ -81,14 +106,13 @@
     </div>
   </div>
 
-  <!-- VIEW: SELECT -->
-  <div id="view-select" class="flex-1 overflow-y-auto p-4 md:p-6 hidden animate-slide-up bg-gray-50 dark:bg-[#0f172a]">
+  <div id="view-select" class="relative z-10 flex-1 overflow-y-auto p-4 md:p-6 hidden animate-slide-up">
     <div class="max-w-4xl mx-auto pb-20">
       <button onclick="app.goHome()" class="mb-6 flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white transition-colors group">
         <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i> Quay lại
       </button>
 
-      <div class="bg-white dark:bg-[#1e293b] p-6 rounded-2xl shadow-sm dark:shadow-lg border border-slate-200 dark:border-slate-700/50 mb-8 flex items-center gap-6 relative overflow-hidden transition-colors">
+      <div class="bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm dark:shadow-lg border border-slate-200 dark:border-slate-700/50 mb-8 flex items-center gap-6 relative overflow-hidden transition-colors">
         <div class="hidden dark:block absolute top-0 right-0 w-64 h-64 bg-primary-600/10 blur-[80px] rounded-full pointer-events-none"></div>
         <div id="selected-sub-icon" class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 text-4xl shrink-0 z-10"></div>
         <div class="z-10">
@@ -98,11 +122,10 @@
       </div>
 
       <div class="space-y-8">
-        <!-- GIỮ NGUYÊN PHẦN NỘI DUNG CÁC KHỐI BÀI THI -->
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Kiểm tra thường xuyên</h3>
           <div class="grid md:grid-cols-2 gap-4">
-            <div data-exam-type="15m" onclick="app.onExamTileClick('15m')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
+            <div data-exam-type="15m" onclick="app.onExamTileClick('15m')" class="exam-tile group relative bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0 border border-emerald-200 dark:border-emerald-500/20">15'</div>
               <div class="flex-1 min-w-0">
                 <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base mb-0.5 truncate group-hover:text-blue-600 dark:group-hover:text-primary-400 transition-colors">Kiểm tra 15 Phút</h3>
@@ -113,7 +136,7 @@
                  <i class="fa-solid fa-play text-slate-300 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-primary-500 transition-colors text-lg"></i>
               </div>
             </div>
-            <div data-exam-type="45m" onclick="app.onExamTileClick('45m')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
+            <div data-exam-type="45m" onclick="app.onExamTileClick('45m')" class="exam-tile group relative bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm shrink-0 border border-blue-200 dark:border-blue-500/20">45'</div>
               <div class="flex-1 min-w-0">
                 <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base mb-0.5 truncate group-hover:text-blue-600 dark:group-hover:text-primary-400 transition-colors">Kiểm tra 1 Tiết</h3>
@@ -130,7 +153,7 @@
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Học kỳ 1</h3>
           <div class="grid md:grid-cols-2 gap-4">
-            <div data-exam-type="gk1" onclick="app.onExamTileClick('gk1')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
+            <div data-exam-type="gk1" onclick="app.onExamTileClick('gk1')" class="exam-tile group relative bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/20 text-amber-600 dark:text-amber-500 flex items-center justify-center font-bold text-xs shrink-0 border border-amber-200 dark:border-amber-500/20">GK1</div>
               <div class="flex-1 min-w-0">
                 <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base mb-0.5 truncate group-hover:text-blue-600 dark:group-hover:text-primary-400 transition-colors">Giữa Học Kỳ 1</h3>
@@ -141,7 +164,7 @@
                  <i class="fa-solid fa-play text-slate-300 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-primary-500 transition-colors text-lg"></i>
               </div>
             </div>
-            <div data-exam-type="ck1" onclick="app.onExamTileClick('ck1')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
+            <div data-exam-type="ck1" onclick="app.onExamTileClick('ck1')" class="exam-tile group relative bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-500 flex items-center justify-center font-bold text-xs shrink-0 border border-orange-200 dark:border-orange-500/20">CK1</div>
               <div class="flex-1 min-w-0">
                 <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base mb-0.5 truncate group-hover:text-blue-600 dark:group-hover:text-primary-400 transition-colors">Cuối Học Kỳ 1</h3>
@@ -158,7 +181,7 @@
         <div>
           <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 ml-1">Học kỳ 2</h3>
           <div class="grid md:grid-cols-2 gap-4">
-            <div data-exam-type="gk2" onclick="app.onExamTileClick('gk2')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
+            <div data-exam-type="gk2" onclick="app.onExamTileClick('gk2')" class="exam-tile group relative bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-cyan-100 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-500 flex items-center justify-center font-bold text-xs shrink-0 border border-cyan-200 dark:border-cyan-500/20">GK2</div>
               <div class="flex-1 min-w-0">
                 <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base mb-0.5 truncate group-hover:text-blue-600 dark:group-hover:text-primary-400 transition-colors">Giữa Học Kỳ 2</h3>
@@ -169,7 +192,7 @@
                  <i class="fa-solid fa-play text-slate-300 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-primary-500 transition-colors text-lg"></i>
               </div>
             </div>
-            <div data-exam-type="ck2" onclick="app.onExamTileClick('ck2')" class="exam-tile group relative bg-white dark:bg-[#1e293b] hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
+            <div data-exam-type="ck2" onclick="app.onExamTileClick('ck2')" class="exam-tile group relative bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-[#253045] p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-primary-500/50 cursor-pointer transition-all flex items-center gap-4 shadow-sm">
               <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-500 flex items-center justify-center font-bold text-xs shrink-0 border border-indigo-200 dark:border-indigo-500/20">CK2</div>
               <div class="flex-1 min-w-0">
                 <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base mb-0.5 truncate group-hover:text-blue-600 dark:group-hover:text-primary-400 transition-colors">Cuối Học Kỳ 2</h3>
@@ -203,27 +226,201 @@
     </div>
   </div>
 
-  <!-- VIEW: QUIZ -->
-  <div id="view-quiz" class="flex-1 flex flex-col hidden h-[calc(100vh-64px)] overflow-hidden bg-slate-50 dark:bg-slate-900">
+  <div id="view-thpt-2026" class="relative z-10 flex-1 overflow-y-auto p-4 md:p-8 hidden animate-fade-in">
+    <div class="max-w-6xl mx-auto pb-10">
+        <button onclick="app.goHome()" class="mb-6 flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white transition-colors group">
+            <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i> Quay lại
+        </button>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- SỬA ĐOẠN NÀY: Quote Box thay đổi theo Light/Dark mode -->
+                <div class="bg-white dark:bg-gradient-to-br dark:from-[#1e293b] dark:to-[#0f172a] p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700/50 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-indigo-500/20 transition-colors"></div>
+                    <div class="relative z-10">
+                        <i class="fa-solid fa-quote-left text-4xl text-slate-300 dark:text-slate-600 mb-4 block"></i>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-2 italic">"Học tập là hạt giống của kiến thức, kiến thức là hạt giống của hạnh phúc."</h2>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium">— Ngạn ngữ Georgia</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+                    <h3 class="text-center text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-xs mb-6">Thời gian còn lại đến kỳ thi THPT 2026</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border border-slate-100 dark:border-slate-700">
+                            <div class="text-3xl md:text-5xl font-black text-slate-800 dark:text-white mb-1" id="cd-days">00</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Ngày</div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border border-slate-100 dark:border-slate-700">
+                            <div class="text-3xl md:text-5xl font-black text-slate-800 dark:text-white mb-1" id="cd-hours">00</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Giờ</div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border border-slate-100 dark:border-slate-700">
+                            <div class="text-3xl md:text-5xl font-black text-slate-800 dark:text-white mb-1" id="cd-minutes">00</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Phút</div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border border-slate-100 dark:border-slate-700">
+                            <div class="text-3xl md:text-5xl font-black text-slate-800 dark:text-white mb-1" id="cd-seconds">00</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Giây</div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex flex-wrap justify-center gap-3">
+                         <div class="px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold border border-emerald-200 dark:border-emerald-800/30 flex items-center gap-2">
+                            <i class="fa-solid fa-star"></i> Nỗ lực mỗi ngày
+                         </div>
+                         <div class="px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-xs font-bold border border-blue-200 dark:border-blue-800/30 flex items-center gap-2">
+                            <i class="fa-solid fa-users"></i> Đồng hành cùng nhau
+                         </div>
+                         <div class="px-4 py-2 rounded-full bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 text-xs font-bold border border-purple-200 dark:border-purple-800/30 flex items-center gap-2">
+                            <i class="fa-solid fa-bullseye"></i> Hướng tới thành công
+                         </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+                    <h3 class="flex items-center gap-2 text-lg font-bold text-slate-800 dark:text-white mb-6">
+                        <i class="fa-regular fa-newspaper"></i> Tin tức & Thông báo
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="group cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 transition-all">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold px-2 py-1 rounded">Thông tin kỳ thi</span>
+                                <span class="text-[10px] text-slate-400">15 phút đọc</span>
+                            </div>
+                            <h4 class="font-bold text-slate-700 dark:text-slate-200 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Nỗ lực về đích trong Kỳ thi tốt nghiệp THPT 2026</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 mb-3">Kỳ thi tốt nghiệp THPT năm 2026 là dấu mốc quan trọng khi tiếp tục áp dụng Chương trình giáo dục phổ thông 2018...</p>
+                            <div class="flex justify-between items-center text-[10px] font-bold">
+                                <span class="text-slate-400">2026-06-12</span>
+                                <span class="text-blue-600 dark:text-blue-400"><a href="https://baophutho.vn/no-luc-ve-dich-trong-ky-thi-tot-nghiep-thpt-2025-234313.htm">Đọc thêm</a></span>
+                            </div>
+                        </div>
+                        <div class="group cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 transition-all">
+                             <div class="flex justify-between items-start mb-2">
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold px-2 py-1 rounded">Quy chế thi</span>
+                                <span class="text-[10px] text-slate-400">10 phút đọc</span>
+                            </div>
+                            <h4 class="font-bold text-slate-700 dark:text-slate-200 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Những điểm mới trong quy chế thi 2026</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 mb-3">Bộ Giáo dục và Đào tạo công bố dự thảo quy chế thi tốt nghiệp THPT từ năm 2026 với nhiều điểm mới đáng chú ý...</p>
+                            <div class="flex justify-between items-center text-[10px] font-bold">
+                                <span class="text-slate-400">2026-05-20</span>
+                                <span class="text-blue-600 dark:text-blue-400"><a href="https://xaydungchinhsach.chinhphu.vn/chi-tiet-lich-thi-tot-nghiep-thpt-nam-2026-119250324122530018.htm">Đọc thêm</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+                    <h3 class="flex items-center gap-2 text-lg font-bold text-slate-800 dark:text-white mb-4">
+                        <i class="fa-solid fa-list-check"></i> Lịch thi tổng quan (Dự kiến)
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-xl bg-[#2e7da8]/10 dark:bg-[#2e7da8]/20 border border-[#2e7da8]/20 relative overflow-hidden">
+                            <div class="relative z-10">
+                                <div class="font-bold text-[#2e7da8] dark:text-[#5faecf] text-base mb-1">Ngữ văn</div>
+                                <div class="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+                                    <span>11/6/2026</span>
+                                    <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                    <span>Sáng</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">
+                                        07:30 • 120 phút
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded bg-[#2e7da8] text-white text-[10px] font-bold">Đang đếm ngược</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 group hover:border-blue-300 transition-colors">
+                            <div class="font-bold text-slate-800 dark:text-white text-base mb-1 group-hover:text-blue-600 transition-colors">Toán</div>
+                            <div class="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+                                <span>11/6/2026</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>Chiều</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>14:20</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>90 phút</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 group hover:border-blue-300 transition-colors">
+                            <div class="font-bold text-slate-800 dark:text-white text-base mb-1 group-hover:text-blue-600 transition-colors">Bài thi Tự chọn môn thứ nhất</div>
+                            <div class="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+                                <span>12/6/2026</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>Sáng</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>07:30</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>50 phút</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 group hover:border-blue-300 transition-colors">
+                            <div class="font-bold text-slate-800 dark:text-white text-base mb-1 group-hover:text-blue-600 transition-colors">Bài thi Tự chọn môn thứ hai</div>
+                            <div class="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+                                <span>12/6/2026</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>Sáng</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>08:35</span>
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                                <span>50 phút</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2 text-slate-800 dark:text-white">
+                        <i class="fa-solid fa-lightbulb text-yellow-500"></i> Mẹo học tập
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500/50 transition-all cursor-pointer group">
+                            <div class="font-bold text-base mb-1 text-slate-700 dark:text-slate-200 group-hover:text-blue-500 transition-colors">Phương pháp Pomodoro</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Học 25 phút, nghỉ 5 phút. Giúp duy trì sự tập trung cao độ.</div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500/50 transition-all cursor-pointer group">
+                            <div class="font-bold text-base mb-1 text-slate-700 dark:text-slate-200 group-hover:text-blue-500 transition-colors">Active Recall</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Tự đặt câu hỏi và trả lời thay vì chỉ đọc lại sách giáo khoa.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="view-quiz" class="relative z-10 flex-1 flex flex-col hidden h-[calc(100vh-64px)] overflow-hidden bg-slate-50 dark:bg-slate-900">
     <div class="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 px-4 py-3 flex justify-between items-center shrink-0 transition-colors">
       <div class="flex items-center gap-3">
-        <button onclick="app.quitQuiz()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <button onclick="app.quitQuiz()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"><i class="fa-solid fa-arrow-left text-lg"></i></button>
         <div>
-          <h3 class="font-bold text-sm leading-none dark:text-white" id="quiz-title-display">Môn</h3>
-          <div class="flex items-center gap-2 mt-1">
-             <p class="text-[10px] text-slate-500 dark:text-slate-400" id="quiz-status-text">Đang làm bài</p>
-             <span id="training-mode-badge" class="hidden text-[9px] font-bold text-white bg-emerald-500 px-1.5 rounded">Luyện tập</span>
+          <div class="flex items-center gap-2">
+             <h3 class="font-bold text-sm leading-none dark:text-white" id="quiz-title-display">Môn</h3>
+             <span id="training-mode-badge" class="hidden text-[9px] font-bold text-white bg-emerald-500 px-1.5 py-0.5 rounded">Luyện tập</span>
           </div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="quiz-status-text">Đang làm bài</p>
         </div>
       </div>
-      <div id="timer-container" class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-red-100 dark:border-red-800/30 font-mono font-bold text-sm transition-colors">
-        <i class="fa-regular fa-clock"></i>
-        <span id="timer">00:00</span>
+      
+      <div class="flex items-center gap-3">
+        <button onclick="app.resetQuiz()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-slate-500 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center justify-center transition-colors" title="Làm lại từ đầu">
+            <i class="fa-solid fa-rotate-right text-sm"></i>
+        </button>
+        <div id="timer-container" class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-red-100 dark:border-red-800/30 font-mono font-bold text-sm transition-colors">
+            <i class="fa-regular fa-clock"></i>
+            <span id="timer">00:00</span>
+        </div>
       </div>
     </div>
 
     <div class="flex-1 flex overflow-hidden relative">
-      <div id="questions-container" class="flex-1 overflow-y-auto p-4 md:p-8 pb-32 no-scrollbar scroll-smooth"></div>
+      <div id="questions-container" class="flex-1 overflow-y-auto pb-32 no-scrollbar scroll-smooth relative bg-gray-50 dark:bg-slate-900"></div>
 
       <div class="hidden md:flex w-72 bg-white dark:bg-slate-800 border-l border-gray-200 dark:border-slate-700 flex-col shadow-xl z-10 transition-colors">
         <div class="p-3 border-b border-gray-100 dark:border-slate-700 font-bold text-sm text-slate-700 dark:text-slate-300">Mục lục câu hỏi</div>
@@ -267,8 +464,7 @@
     </div>
   </div>
 
-  <!-- VIEW: RESULT -->
-  <div id="view-result" class="flex-1 overflow-y-auto p-6 md:p-10 hidden animate-slide-up">
+  <div id="view-result" class="relative z-10 flex-1 overflow-y-auto p-6 md:p-10 hidden animate-slide-up bg-gray-50/80 dark:bg-[#0f172a]/80 backdrop-blur-sm">
     <div class="max-w-xl mx-auto">
       <button onclick="app.goHome()" class="mb-6 flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary-600 transition-colors">
         <i class="fa-solid fa-arrow-left"></i> Trang chủ
@@ -291,7 +487,7 @@
             <i class="fa-solid fa-eye"></i> Xem đáp án chi tiết
           </button>
           <div class="grid grid-cols-2 gap-3">
-            <button onclick="app.startExam(app.data.state.lastType, true)" class="py-3.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl font-bold transition-colors">Làm lại</button>
+            <button onclick="app.startExam(app.data.state.lastType, true, app.data.state.mode)" class="py-3.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl font-bold transition-colors">Làm lại</button>
             <button onclick="app.goHome()" class="py-3.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl font-bold transition-colors">Trang chủ</button>
           </div>
         </div>
@@ -299,7 +495,6 @@
     </div>
   </div>
 
-  <!-- NEW: MODAL CHỌN CHẾ ĐỘ THI (QUAN TRỌNG) -->
   <div id="mode-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="app.closeModeModal()"></div>
     <div class="relative bg-white dark:bg-slate-800 w-full max-w-md mx-4 p-6 rounded-2xl shadow-2xl animate-slide-up border border-slate-100 dark:border-slate-700">
@@ -335,7 +530,6 @@
     </div>
   </div>
 
-  <!-- POPUP THÔNG BÁO AI -->
   <div id="ai-notice-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden transition-opacity duration-300">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <div class="relative bg-white dark:bg-slate-800 w-full max-w-md mx-4 p-6 rounded-2xl shadow-2xl animate-fade-in border border-slate-100 dark:border-slate-700">
