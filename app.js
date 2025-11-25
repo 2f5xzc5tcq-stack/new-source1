@@ -20,9 +20,13 @@ const app = {
       mode: 'exam',
       filterMode: 'all',
       file: null,
-      startedAt: 0
+      startedAt: 0,
+      countdownTimer: null
     }
   },
+  
+  particleCtx: null,
+  animationFrame: null,
 
   async init() {
     try {
@@ -50,6 +54,7 @@ const app = {
 
     this.checkNotice()
     this.renderSubjects()
+    this.initParticles()
     this.switchView('home')
   },
 
@@ -268,7 +273,47 @@ const app = {
     this.switchView('home')
   },
 
-  // LOGIC MỞ MODAL CHỌN MODE
+  goToCountdown() {
+      this.switchView('thpt-2026')
+      this.startCountdown()
+  },
+
+  startCountdown() {
+    clearInterval(this.data.state.countdownTimer)
+    
+    const update = () => {
+        const targetDate = new Date('2026-06-11T07:30:00').getTime()
+        const now = new Date().getTime()
+        const distance = targetDate - now
+
+        if (distance < 0) {
+            document.getElementById('cd-days').innerText = "00"
+            document.getElementById('cd-hours').innerText = "00"
+            document.getElementById('cd-minutes').innerText = "00"
+            document.getElementById('cd-seconds').innerText = "00"
+            return
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+        const elDays = document.getElementById('cd-days')
+        const elHours = document.getElementById('cd-hours')
+        const elMinutes = document.getElementById('cd-minutes')
+        const elSeconds = document.getElementById('cd-seconds')
+
+        if(elDays) elDays.innerText = String(days).padStart(2, '0')
+        if(elHours) elHours.innerText = String(hours).padStart(2, '0')
+        if(elMinutes) elMinutes.innerText = String(minutes).padStart(2, '0')
+        if(elSeconds) elSeconds.innerText = String(seconds).padStart(2, '0')
+    }
+
+    update()
+    this.data.state.countdownTimer = setInterval(update, 1000)
+  },
+
   openModeModal() {
     document.getElementById('mode-modal').classList.remove('hidden')
   },
@@ -290,19 +335,17 @@ const app = {
     const cfg = this.getExamConfig(sub, type)
     const lockInfo = cfg.lockInfo || {}
     const locked = (lockInfo.locked ?? this.settings.lockedByDefaultExam ?? false) && !this.isExamUnlocked(sub.id, type)
-    
     if (locked) {
       this.tryUnlockExam(sub, type, { ...lockInfo, name: cfg.name }).then(ok => {
         if (ok) {
-            this.data.state.tempExamType = type;
-            this.openModeModal();
+            this.data.state.tempExamType = type
+            this.openModeModal()
         }
       })
       return
     }
-    
-    this.data.state.tempExamType = type;
-    this.openModeModal();
+    this.data.state.tempExamType = type
+    this.openModeModal()
   },
 
   idxToLetter(i) {
@@ -470,7 +513,8 @@ const app = {
       file: cfg.file,
       startedAt: startedAt,
       filterMode: 'all',
-      mode: currentMode
+      mode: currentMode,
+      countdownTimer: this.data.state.countdownTimer
     }
 
     if (forceNew) this.data.state.mode = mode
@@ -495,6 +539,12 @@ const app = {
     this.renderPalette()
     this.updateTimerDisplay()
     this.startTimer()
+  },
+
+  resetQuiz() {
+    if(confirm('Bạn có muốn làm lại bài từ đầu?')) {
+       this.startExam(this.data.state.lastType, true, this.data.state.mode)
+    }
   },
 
   startTimer() {
@@ -530,13 +580,13 @@ const app = {
 
     let filterHtml = ''
     if (st.isReview) {
-        const btnClass = (mode) => `px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${st.filterMode === mode ? 'bg-blue-600 text-white border-blue-600 shadow-md' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'}`
+        const btnClass = (mode) => `px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${st.filterMode === mode ? 'bg-blue-600 text-white border-blue-600 shadow-sm' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'}`
         filterHtml = `
-        <div class="flex items-center gap-3 mb-6 sticky top-0 z-20 bg-slate-50/95 dark:bg-slate-900/95 p-2 backdrop-blur-sm -mx-2 px-4">
-            <span class="text-xs font-bold text-slate-400 uppercase"><i class="fa-solid fa-filter"></i> Lọc:</span>
-            <button onclick="app.setFilter('all')" class="${btnClass('all')}">Tất cả</button>
-            <button onclick="app.setFilter('wrong')" class="${btnClass('wrong')}">Câu Sai</button>
-            <button onclick="app.setFilter('bookmarked')" class="${btnClass('bookmarked')}">Đã Lưu</button>
+        <div class="sticky top-0 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 py-2 -mx-4 px-4 mb-4 flex items-center gap-3 overflow-x-auto no-scrollbar">
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider shrink-0"><i class="fa-solid fa-filter mr-1"></i>Lọc KQ:</div>
+            <button onclick="app.setFilter('all')" class="${btnClass('all')} shrink-0">Tất cả</button>
+            <button onclick="app.setFilter('wrong')" class="${btnClass('wrong')} shrink-0">Câu Sai</button>
+            <button onclick="app.setFilter('bookmarked')" class="${btnClass('bookmarked')} shrink-0">Đã Lưu</button>
         </div>`
     }
 
@@ -868,7 +918,7 @@ const app = {
   },
 
   switchView(view) {
-    ['home', 'select', 'quiz', 'result'].forEach(v => {
+    ['home', 'select', 'quiz', 'result', 'thpt-2026'].forEach(v => {
       const el = document.getElementById(`view-${v}`)
       if (!el) return
       if (v === view) {
@@ -879,6 +929,92 @@ const app = {
       }
     })
     window.scrollTo({ top: 0 })
+  },
+  
+  initParticles() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    const particleCount = window.innerWidth < 768 ? 30 : 60;
+    const connectionDistance = 150;
+    const moveSpeed = 0.5;
+
+    const resize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * moveSpeed;
+        this.vy = (Math.random() - 0.5) * moveSpeed;
+        this.size = Math.random() * 2 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+
+      draw() {
+        const isDark = document.documentElement.classList.contains('dark');
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(30, 41, 59, 0.3)';
+        ctx.fill();
+      }
+    }
+
+    const init = () => {
+      resize();
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+      const isDark = document.documentElement.classList.contains('dark');
+      const lineColor = isDark ? '255, 255, 255' : '99, 102, 241';
+
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.update();
+        p.draw();
+        for (let j = i; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dx = p.x - p2.x;
+          let dy = p.y - p2.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < connectionDistance) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(${lineColor}, ${1 - dist / connectionDistance - 0.5})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', () => {
+        resize();
+        init();
+    });
+    
+    init();
+    animate();
   }
 }
 
